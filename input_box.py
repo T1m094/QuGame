@@ -3,7 +3,7 @@ import time
 class InputBox:
 
     def __init__(self, x, y, w, h, color, text):
-        font = pygame.font.SysFont('''Arial Baltic''', 30)
+        font = pygame.font.SysFont('''Arial Baltic''', 40)
 
         self.rect = pygame.Rect(x, y, w, h)
         self.color = color
@@ -60,5 +60,5 @@ class InputBox:
     def update(self):
         # Re-render the text.
         if self.active:
-            font = pygame.font.SysFont('''Arial Baltic''', 30)
+            font = pygame.font.SysFont('''Arial Baltic''', 50)
             self.txt_surface = font.render(self.text, True, self.color)

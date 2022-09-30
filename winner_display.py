@@ -8,17 +8,19 @@ def winner_display(player_array):
     font = pygame.font.SysFont('''Arial Baltic''', 80)
     name_font = pygame.font.SysFont('''Arial Baltic''', 50)
 
+
     player_count = len(player_array)
     winner_array = []
 
     #Winner sort
     for x in range(0, player_count):
-        winner_array.append([player_array[x].color,player_array[x].points])
+        winner_array.append([player_array[x].color,player_array[x].points,player_array[x].name])
 
     winner_array.sort(key=lambda x: x[1])
     #Reihenfolge umkehren
     winner_array = winner_array[::-1]
 
+    print(winner_array[0][2])
     #Show Score
     #Print Frame
     #     1                                  5
@@ -95,6 +97,13 @@ def winner_display(player_array):
         pos_y = 0
         name_and_point_pos_y = 260
 
+        #Info Text Name Punkte
+        text = name_font.render("Spielername", True, (0,255,255)) #TODO: TR
+        screen.screen.blit(text, ((screen.W / 2) - 300, ((screen.H/4) + 90 + h)))
+        text = name_font.render("Punkte", True, (0,255,255)) #TODO: TR
+        screen.screen.blit(text, ((screen.W / 2) + 200, ((screen.H/4) + 90 + h)))
+
+
         pygame.draw.rect(screen.screen, (winner_array[0][0]), ((screen.W / 2) - 400, 230 + pos_y, 800, 100), 5) #Frame
         screen.screen.blit(text_point_1, ((screen.W / 2) + 200, name_and_point_pos_y))                         #Points
 
@@ -107,13 +116,13 @@ def winner_display(player_array):
         # Text pos y
         name_and_point_pos_y = 260
         # Name
-        name = str(player_array[0].name)
-        name_text = name_font.render(name, True, (0, 255, 255))
+        name = str(winner_array[0][2])
+        name_text = name_font.render(name, True, winner_array[0][0]) # <-- xD
         screen.screen.blit(name_text, ((screen.W / 2) - 300, name_and_point_pos_y))
-        name_and_point_pos_y +=  180
+        name_and_point_pos_y +=  150
 
-        name = str(player_array[1].name)
-        name_text = name_font.render(name, True, (0, 255, 255))
+        name = str(winner_array[1][2])
+        name_text = name_font.render(name, True, winner_array[1][0])
         screen.screen.blit(name_text, ((screen.W / 2) - 300, name_and_point_pos_y))
 
         if (player_count > 2):
@@ -122,8 +131,8 @@ def winner_display(player_array):
             pygame.draw.rect(screen.screen, (winner_array[2][0]), ((screen.W / 2) - 400, 230 + pos_y, 800, 100), 5)
             screen.screen.blit(text_point_3, ((screen.W / 2) + 200, name_and_point_pos_y))
 
-            name = str(player_array[2].name)
-            name_text = name_font.render(name, True, (0, 255, 255))
+            name = str(winner_array[2][2])
+            name_text = name_font.render(name, True, winner_array[2][0])
             screen.screen.blit(name_text, ((screen.W / 2) - 300, name_and_point_pos_y))
 
         if (player_count > 3):
@@ -132,8 +141,8 @@ def winner_display(player_array):
             pygame.draw.rect(screen.screen, (winner_array[3][0]), ((screen.W / 2) - 400, 230 + pos_y, 800, 100), 5)
             screen.screen.blit(text_point_4, ((screen.W / 2) + 200, name_and_point_pos_y))
 
-            name = str(player_array[3].name)
-            name_text = name_font.render(name, True, (0, 255, 255))
+            name = str(winner_array[3][2])
+            name_text = name_font.render(name, True, winner_array[3][0])
             screen.screen.blit(name_text, ((screen.W / 2) - 300, name_and_point_pos_y))
 
 

@@ -22,7 +22,7 @@ class tr():
             text = ["PAUSE","BREAK"]
             text = text[language]
         elif (content == 5):
-            text = ["ZUM STARTEN/PAUSIEREN LEERTASTE DRÜCKEN" ,"PRESS SPACE TO START"]
+            text = ["ZUM PAUSIEREN LEERTASTE DRÜCKEN" ,"PRESS SPACE TO BREAK"]
             text = text[language]
         elif (content == 6):
             text = ["INFO","ABOUT"]

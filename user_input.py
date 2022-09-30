@@ -141,6 +141,19 @@ def user_input(controller_count, player_array, timer):
                 # Unten
                 if ((event.value > 0.35) and (event.axis == 1)):
                     player[event.joy].change_direction(2)
+            if event.type == pygame.JOYHATMOTION:
+                # print("oben")
+                if event.value == (0, 1):
+                    player[event.joy].change_direction(8)
+                # print("unten")
+                if event.value == (0, -1):
+                    player[event.joy].change_direction(2)
+                # print("links")
+                if event.value == (-1, 0):
+                    player[event.joy].change_direction(4)
+                # print("rechts")
+                if event.value == (1, 0):
+                    player[event.joy].change_direction(6)
             if event.type == pygame.QUIT:
                 quit()
                 return
@@ -222,6 +235,19 @@ def user_input(controller_count, player_array, timer):
                 # Unten
                 if ((event.value > 0.35) and (event.axis == 1)):
                     player[event.joy].change_direction(2)
+            if event.type == pygame.JOYHATMOTION:
+                # print("oben")
+                if event.value == (0, 1):
+                    player[event.joy].change_direction(8)
+                # print("unten")
+                if event.value == (0, -1):
+                    player[event.joy].change_direction(2)
+                # print("links")
+                if event.value == (-1, 0):
+                    player[event.joy].change_direction(4)
+                # print("rechts")
+                if event.value == (1, 0):
+                    player[event.joy].change_direction(6)
             if event.type == pygame.QUIT:
                 quit()
                 return

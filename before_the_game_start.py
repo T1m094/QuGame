@@ -17,14 +17,16 @@ def befor_the_game_start(item_p, player_array):
     start_user = False
     timer_sound_bg = True
 
+    size_input = [200,60]
+
     # create inputbox for Player 1
-    input_box1 = input_box.InputBox(250, (screen.H - 300), 200, 40, (0, 255, 255),"Player 1")
+    input_box1 = input_box.InputBox(250, (screen.H - 300), size_input[0], size_input[1],  (0, 255, 255),"Player 1")
     # create input for Player 2
-    input_box2 = input_box.InputBox((screen.W - 250), (screen.H - 300), 200, 40, (0, 255, 255),"Player 2")
+    input_box2 = input_box.InputBox((screen.W - 250), (screen.H - 300), size_input[0], size_input[1], (0, 255, 255),"Player 2")
     # create input for Player 3
-    input_box3 = input_box.InputBox(250, 300, 200, 40, (0, 255, 255),"Player 3")
+    input_box3 = input_box.InputBox(250, 300, size_input[0], size_input[1], (0, 255, 255),"Player 3")
     # create input for Player 4
-    input_box4 = input_box.InputBox((screen.W - 250), 300, 200, 40, (0, 255, 255),"Player 4")
+    input_box4 = input_box.InputBox((screen.W - 250), 300,size_input[0], size_input[1], (0, 255, 255),"Player 4")
 
 
 
