@@ -1,0 +1,149 @@
+{
+ "version": "auto-py-to-exe-configuration_v1",
+ "pyinstallerOptions": [
+  {
+   "optionDest": "noconfirm",
+   "value": true
+  },
+  {
+   "optionDest": "filenames",
+   "value": "C:/QuGame/main.py"
+  },
+  {
+   "optionDest": "onefile",
+   "value": true
+  },
+  {
+   "optionDest": "console",
+   "value": false
+  },
+  {
+   "optionDest": "icon_file",
+   "value": "C:/QuGame/data/image/Qu.ico"
+  },
+  {
+   "optionDest": "name",
+   "value": "QuGame test"
+  },
+  {
+   "optionDest": "ascii",
+   "value": false
+  },
+  {
+   "optionDest": "clean_build",
+   "value": false
+  },
+  {
+   "optionDest": "strip",
+   "value": false
+  },
+  {
+   "optionDest": "noupx",
+   "value": false
+  },
+  {
+   "optionDest": "disable_windowed_traceback",
+   "value": false
+  },
+  {
+   "optionDest": "embed_manifest",
+   "value": true
+  },
+  {
+   "optionDest": "uac_admin",
+   "value": false
+  },
+  {
+   "optionDest": "uac_uiaccess",
+   "value": false
+  },
+  {
+   "optionDest": "win_private_assemblies",
+   "value": false
+  },
+  {
+   "optionDest": "win_no_prefer_redirects",
+   "value": false
+  },
+  {
+   "optionDest": "bootloader_ignore_signals",
+   "value": false
+  },
+  {
+   "optionDest": "argv_emulation",
+   "value": false
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/image/cont_pl_1.png;cont_pl_1_str"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/image/cont_pl_2.png;cont_pl_2_str"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/image/cont_pl_3.png;cont_pl_3_str"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/image/cont_pl_4.png;cont_pl_4_str"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/image/controller.png;joystick_png_str"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/image/controller1.png;joystick_1_png_str"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/image/controller2.png;joystick_2_png_str"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/image/controller3.png;joystick_3_png_str"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/image/controller4.png;joystick_4_png_str"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/image/Qu.ico;icon_str"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/sound/Dario_sound.mp3;bg_music_2_str"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/sound/Fiep_2.mp3;item_yellow_pf_str"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/sound/item_destroy.mp3;item_destroy_pf_str"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/sound/musicfox_brainstorming.mp3;bg_music_1_str"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/sound/sms-alert-2-daniel_simon.wav;item_blue_pf_str"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/sound/sms-alert-5-daniel_simon.mp3;item_speed_pf_str"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/QuGame/data/sound/time_out.mp3;time_out_music_str"
+  }
+ ],
+ "nonPyinstallerOptions": {
+  "increaseRecursionLimit": true,
+  "manualArguments": ""
+ }
+}
