@@ -7,7 +7,7 @@ import instruction
 from main import *
 from screen import *
 from player import *
-from two_player import two_player
+from multiplayer_game_start import two_player
 
 def main_menue():
     sound = soundandmusic.sound()
