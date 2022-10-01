@@ -18,7 +18,7 @@ class player(objekt):
             # Player
             self.pos_x = (screen.W/2) - 300
             self.pos_y = (screen.H / 2) - 50
-            self.direction = 6
+            self.direction = 4
             self.color = (255, 0, 0)
             #Speed Item
             self.speed_item_pos_x = (screen.W/2) + 235
@@ -28,7 +28,7 @@ class player(objekt):
             # Player
             self.pos_x = (screen.W/2) + 200
             self.pos_y = (screen.H / 2) - 50
-            self.direction = 4
+            self.direction = 6
             self.color = (0, 255, 0)
             # Speed Item
             self.speed_item_pos_x = (screen.W/2) - 265
@@ -38,7 +38,7 @@ class player(objekt):
             # Player
             self.pos_x = (screen.W/2) - 50
             self.pos_y = (screen.H/2) - 300
-            self.direction = 2
+            self.direction = 8
             self.color = (255, 0, 255)
             # Speed Item
             self.speed_item_pos_x = (screen.W/2) - 15
@@ -48,7 +48,7 @@ class player(objekt):
             # Player
             self.pos_x = (screen.W/2) - 50
             self.pos_y = (screen.H/2) + 200
-            self.direction = 8
+            self.direction = 2
             self.color = (0, 255, 255)
             # Speed Item
             self.speed_item_pos_x = (screen.W/2) - 15
