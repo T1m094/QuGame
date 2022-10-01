@@ -6,7 +6,7 @@ from item import *
 from  user_input import *
 from MyTimer import *
 
-def two_player(player_count):
+def multiplayer_game_start(player_count):
     sound = soundandmusic.sound()
 
     #Time
@@ -63,7 +63,6 @@ def two_player(player_count):
 
 
     # Start menü
-    print("DEBUG 1")
     controller_count = before_the_game_start.befor_the_game_start(item_p, player_array)
 
     sound.sound_bg_play_2()

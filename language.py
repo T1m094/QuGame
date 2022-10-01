@@ -30,6 +30,9 @@ class tr():
         elif (content == 7):
             text = ["ERGEBNIS","RESULT"]
             text = text[language]
+        elif (content == 8):
+            text = ["NOCHMAL","AGAIN"]
+            text = text[language]
 
         return text
 

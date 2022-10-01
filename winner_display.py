@@ -40,7 +40,7 @@ def winner_display(player_array):
     p8 = [(screen.W/2) + 450, screen.H + h]
     p9 = [(screen.W/2), (screen.H/4) + h]
 
-    button_x = (screen.W / 2 - 250)
+    button_x = (screen.W/2) - 450
     button_y = (screen.H / 2 - 50)
 
     #Points
@@ -145,10 +145,12 @@ def winner_display(player_array):
             name_text = name_font.render(name, True, winner_array[3][0])
             screen.screen.blit(name_text, ((screen.W / 2) - 300, name_and_point_pos_y))
 
-
-
-        b0 = screen.templates().button(button_x, (button_y + 450), 500, 100, (0, 155, 155), (0, 255, 255), language.tr().M0(0),
+        #Backbutton
+        b0 = screen.templates().button(button_x, (button_y + 450), 400, 100, (0, 155, 155), (0, 255, 255), language.tr().M0(2),
                                        80) #TODO: tr ok
+        b1 = screen.templates().button((screen.W/2) + 50, (button_y + 450), 400, 100, (0, 155, 155), (0, 255, 255), language.tr().M0(8),
+                                       80) #TODO: tr ok
+
         pygame.display.update(screen.mouse_cursor())
         pygame.display.flip()
 
@@ -156,4 +158,6 @@ def winner_display(player_array):
 
         if pygame.mouse.get_pressed()[0]:
             if b0.collidepoint(mouse_pos):
-                return 0
+                return False #Main menue
+            if b1.collidepoint(mouse_pos):
+                return True #PLAY AGAIN

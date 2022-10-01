@@ -7,7 +7,7 @@ import instruction
 from main import *
 from screen import *
 from player import *
-from multiplayer_game_start import two_player
+from multiplayer_game_start import multiplayer_game_start
 
 def main_menue():
     sound = soundandmusic.sound()
@@ -109,15 +109,15 @@ def main_menue():
                 elif (select == 1): #Two Player
                     screen_number = 1
                     screen.screen.fill((0, 0, 0))
-                    two_player(2)
+                    multiplayer_game_start(2)
                 elif (select == 2): #Tree Player
                     screen_number = 1
                     screen.screen.fill((0, 0, 0))
-                    two_player(3)
+                    multiplayer_game_start(3)
                 elif (select == 3): #Four Player
                     screen_number = 1
                     screen.screen.fill((0, 0, 0))
-                    two_player(4)
+                    multiplayer_game_start(4)
                 elif (select == 4): #Online
                     screen_number = 1
                     screen.screen.fill((0, 0, 0))
