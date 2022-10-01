@@ -58,6 +58,14 @@ def winner_display(player_array):
         point_view = str(winner_array[3][1])
         text_point_4 = name_font.render(point_view, True, winner_array[3][0])
 
+
+    simple_player_1 = simple_player_winner(winner_array[0][0], ((screen.W/2) - 600),((screen.H) - 200))
+    simple_player_2 = simple_player_winner(winner_array[0][0], ((screen.W/2) + 500),((screen.H) - 200))
+
+    simple_player_11 = simple_player_winner(winner_array[0][0], ((screen.W/2) - 600),((screen.H) - 400))
+    simple_player_22 = simple_player_winner(winner_array[0][0], ((screen.W/2) + 500),((screen.H) - 400))
+
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -150,6 +158,15 @@ def winner_display(player_array):
                                        80) #TODO: tr ok
         b1 = screen.templates().button((screen.W/2) + 50, (button_y + 450), 400, 100, (0, 155, 155), (0, 255, 255), language.tr().M0(8),
                                        80) #TODO: tr ok
+
+        # Start Simple Player
+        simple_player_1.start()
+        simple_player_2.start()
+        simple_player_11.start()
+        simple_player_22.start()
+
+
+
 
         pygame.display.update(screen.mouse_cursor())
         pygame.display.flip()

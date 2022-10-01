@@ -282,3 +282,29 @@ class simple_player(objekt):
         while not ((ran_number == 2) or (ran_number == 4) or (ran_number == 6) or (ran_number == 8)):
             ran_number = randint(0, 9)
         return ran_number
+class simple_player_winner(objekt):
+    def __init__(self, winner_color, start_x, start_y):
+        # Player
+        self.pos_x = start_x
+        self.pos_y = start_y
+        self.direction = 8
+        self.color = winner_color
+
+        self.size_x = 50
+        self.size_y = 50
+        self.frame = 8
+        self.speed = 2
+    def start(self):
+        self.draw_player()
+        self.move()
+        self.edge_change()
+
+        self.size_y = self.size_x = self.size_x + 0.2
+        if self.size_x > 100:
+            self.size_y = self.size_x  = 100
+
+
+
+
+
+
