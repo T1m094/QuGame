@@ -5,8 +5,8 @@ from random import randint
 from soundandmusic import *
 
 class player(objekt):
-    def __init__(self):
-        self.name = "Test"
+    def __init__(self, name):
+
 
         #Size Quadrat
         self.size_x = 100 #Default 100 TODO
@@ -55,6 +55,7 @@ class player(objekt):
             self.speed_item_pos_y = (screen.H/ 2) - 265
 
         #For all player
+        self.name = name
         self.frame = 10
         self.points = 0
         self.speed = 1
@@ -68,6 +69,57 @@ class player(objekt):
 
         objekt.count_player += 1
         objekt.player_array.append(self)
+
+    def init(self):
+        #Position and Speed at start
+        #Player 1
+        if self.id == 0:
+            # Player
+            self.name = "Player 1 T"
+            self.pos_x = (screen.W/2) - 300
+            self.pos_y = (screen.H / 2) - 50
+            self.direction = 4
+            self.color = (255, 0, 0)
+            #Speed Item
+            self.speed_item_pos_x = (screen.W/2) + 235
+            self.speed_item_pos_y = (screen.H / 2) - 15
+        #Player 2
+        elif self.id == 1:
+            # Player
+            self.name = "Player 2 T"
+            self.pos_x = (screen.W/2) + 200
+            self.pos_y = (screen.H / 2) - 50
+            self.direction = 6
+            self.color = (0, 255, 0)
+            # Speed Item
+            self.speed_item_pos_x = (screen.W/2) - 265
+            self.speed_item_pos_y = (screen.H / 2) - 15
+        #Player 3
+        elif self.id == 2:
+            # Player
+            self.name = "Player 3 T"
+            self.pos_x = (screen.W/2) - 50
+            self.pos_y = (screen.H/2) - 300
+            self.direction = 8
+            self.color = (255, 0, 255)
+            # Speed Item
+            self.speed_item_pos_x = (screen.W/2) - 15
+            self.speed_item_pos_y = (screen.H/ 2) + 235
+        #Player 4
+        elif self.id == 3:
+            # Player
+            self.name = "Player 4 T"
+            self.pos_x = (screen.W/2) - 50
+            self.pos_y = (screen.H/2) + 200
+            self.direction = 2
+            self.color = (38, 122, 240)
+            # Speed Item
+            self.speed_item_pos_x = (screen.W/2) - 15
+            self.speed_item_pos_y = (screen.H/ 2) - 265
+
+        self.points = 0
+        self.speed = 1
+        self.speed_point = 0
 
     def start(self):
         self.draw_player()

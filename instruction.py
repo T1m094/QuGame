@@ -41,7 +41,7 @@ def instruction_screen_1():
     pygame.draw.rect(screen.screen, (255, 0, 255), [player_3_png_rec[0] + 85, player_3_png_rec[1] - 150, 100, 100], 10)
     # player_4
     screen.screen.blit(player_4_png, player_4_png_rec)
-    pygame.draw.rect(screen.screen, (0, 255, 255), [player_4_png_rec[0] + 85, player_4_png_rec[1] - 150, 100, 100], 10)
+    pygame.draw.rect(screen.screen, (38, 122, 240), [player_4_png_rec[0] + 85, player_4_png_rec[1] - 150, 100, 100], 10)
 
 #Explaint points
 def instruction_screen_2():
@@ -108,24 +108,24 @@ def instruction_screen_3():
                      pygame.Rect(player_3_png_rec[0] + 115, player_3_png_rec[1] + 53, 10, 10))
 
     # player_4
-    pygame.draw.rect(screen.screen, (0, 255, 255), [player_4_png_rec[0] + 120, player_4_png_rec[1] - 220, 30, 30], 0)
-    pygame.draw.rect(screen.screen, (0, 255, 255), [player_4_png_rec[0] + 85, player_4_png_rec[1] - 150, 100, 100], 10)
+    pygame.draw.rect(screen.screen, (38, 122, 240), [player_4_png_rec[0] + 120, player_4_png_rec[1] - 220, 30, 30], 0)
+    pygame.draw.rect(screen.screen, (38, 122, 240), [player_4_png_rec[0] + 85, player_4_png_rec[1] - 150, 100, 100], 10)
 
     screen.screen.blit(point_view, (player_4_png_rec[0] + 95, player_4_png_rec[1] + 10))
     pygame.draw.rect(screen.screen, (80, 80, 80), [player_4_png_rec[0] + 85, player_4_png_rec[1] + 50, 73, 16], 2)
-    pygame.draw.rect(screen.screen, (0, 255, 255),
+    pygame.draw.rect(screen.screen, (38, 122, 240),
                      pygame.Rect(player_4_png_rec[0] + 85, player_4_png_rec[1] + 53, 10, 10))
-    pygame.draw.rect(screen.screen, (0, 255, 255),
+    pygame.draw.rect(screen.screen, (38, 122, 240),
                      pygame.Rect(player_4_png_rec[0] + 95, player_4_png_rec[1] + 53, 10, 10))
-    pygame.draw.rect(screen.screen, (0, 255, 255),
+    pygame.draw.rect(screen.screen, (38, 122, 240),
                      pygame.Rect(player_4_png_rec[0] + 105, player_4_png_rec[1] + 53, 10, 10))
-    pygame.draw.rect(screen.screen, (0, 255, 255),
+    pygame.draw.rect(screen.screen, (38, 122, 240),
                      pygame.Rect(player_4_png_rec[0] + 115, player_4_png_rec[1] + 53, 10, 10))
-    pygame.draw.rect(screen.screen, (0, 255, 255),
+    pygame.draw.rect(screen.screen, (38, 122, 240),
                      pygame.Rect(player_4_png_rec[0] + 125, player_4_png_rec[1] + 53, 10, 10))
-    pygame.draw.rect(screen.screen, (0, 255, 255),
+    pygame.draw.rect(screen.screen, (38, 122, 240),
                      pygame.Rect(player_4_png_rec[0] + 135, player_4_png_rec[1] + 53, 10, 10))
-    pygame.draw.rect(screen.screen, (0, 255, 255),
+    pygame.draw.rect(screen.screen, (38, 122, 240),
                      pygame.Rect(player_4_png_rec[0] + 145, player_4_png_rec[1] + 53, 10, 10))
 
 #Yellow Item

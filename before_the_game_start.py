@@ -19,18 +19,6 @@ def befor_the_game_start(item_p, player_array):
 
     size_input = [200,60]
 
-    # create inputbox for Player 1
-    input_box1 = input_box.InputBox(250, (screen.H - 300), size_input[0], size_input[1],  (0, 255, 255),"Player 1")
-    # create input for Player 2
-    input_box2 = input_box.InputBox((screen.W - 250), (screen.H - 300), size_input[0], size_input[1], (0, 255, 255),"Player 2")
-    # create input for Player 3
-    input_box3 = input_box.InputBox(250, 300, size_input[0], size_input[1], (0, 255, 255),"Player 3")
-    # create input for Player 4
-    input_box4 = input_box.InputBox((screen.W - 250), 300,size_input[0], size_input[1], (0, 255, 255),"Player 4")
-
-
-
-
 
     game_start_button = screen.templates.button(None, (screen.W / 2) - 250, (screen.H - 150), 500, 100, (0, 155, 155),
                                      (0, 255, 255), "Spiel Starten", 80)  # TODO: TEXT Spiel starten
@@ -40,14 +28,24 @@ def befor_the_game_start(item_p, player_array):
     sound = soundandmusic.sound()
     player_count = len(player_array)
 
+    # create inputbox for Player 1
+    input_box1 = input_box.InputBox(250, (screen.H - 300), size_input[0], size_input[1],  (0, 255, 255),player_array[0].name)
+    # create input for Player 2
+    input_box2 = input_box.InputBox((screen.W - 250), (screen.H - 300), size_input[0], size_input[1], (0, 255, 255),player_array[1].name)
     #Box 1 aktiv
 
     #Visible Imput Filds
     if player_count == 2:
         input_boxes = [input_box1, input_box2]
     if player_count == 3:
+        # create input for Player 3
+        input_box3 = input_box.InputBox(250, 300, size_input[0], size_input[1], (0, 255, 255), player_array[2].name)
         input_boxes = [input_box1, input_box2, input_box3]
     if player_count == 4:
+        # create input for Player 3
+        input_box3 = input_box.InputBox(250, 300, size_input[0], size_input[1], (0, 255, 255), player_array[2].name)
+        # create input for Player 4
+        input_box4 = input_box.InputBox((screen.W - 250), 300, size_input[0], size_input[1], (0, 255, 255), player_array[3].name)
         input_boxes = [input_box1, input_box2, input_box3, input_box4]
 
     input_box1.toggel_active()
