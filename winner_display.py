@@ -45,18 +45,18 @@ def winner_display(player_array):
 
     #Points
     point_view = str(winner_array[0][1])
-    text_point_1= name_font.render(point_view, True, (0, 255, 255))
+    text_point_1= name_font.render(point_view, True, winner_array[0][0])
 
     point_view = str(winner_array[1][1])
-    text_point_2 = name_font.render(point_view, True, (0, 255, 255))
+    text_point_2 = name_font.render(point_view, True, winner_array[1][0])
 
     if (player_count > 2):
         point_view = str(winner_array[2][1])
-        text_point_3 = name_font.render(point_view, True, (0, 255, 255))
+        text_point_3 = name_font.render(point_view, True, winner_array[2][0])
 
     if (player_count > 3):
         point_view = str(winner_array[3][1])
-        text_point_4 = name_font.render(point_view, True, (0, 255, 255))
+        text_point_4 = name_font.render(point_view, True, winner_array[3][0])
 
     while True:
         for event in pygame.event.get():

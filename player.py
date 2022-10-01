@@ -49,7 +49,7 @@ class player(objekt):
             self.pos_x = (screen.W/2) - 50
             self.pos_y = (screen.H/2) + 200
             self.direction = 2
-            self.color = (0, 255, 255)
+            self.color = (38, 122, 240)
             # Speed Item
             self.speed_item_pos_x = (screen.W/2) - 15
             self.speed_item_pos_y = (screen.H/ 2) - 265
