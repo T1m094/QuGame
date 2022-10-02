@@ -9,7 +9,7 @@ if __name__ == '__main__':
     pygame.joystick.init()
 
     try:
-        #TEST GIT
+        #TEST GIT 2
         main_menue()
     except Exception as e:
         error_text = e
