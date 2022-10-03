@@ -106,6 +106,11 @@ class objekt:
 
     def opponent_bumping(self, other):
         if (objekt.bumping(self, other)):
+            # haptisches feedback for withe
+            if not self.joystick == None:
+                self.joystick.rumble(1,1,100)
+            if not other.joystick == None:
+                other.joystick.rumble(1,1,100)
             #same direction
             if (((self.direction == 2) and (other.direction == 2))):
                 if (self.other_over(other)):

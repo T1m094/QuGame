@@ -1,8 +1,8 @@
 import time
 
 class MyTimer:
-    def __init__(self):
-        self.time_out = 300 #<- default 300 = 5 min
+    def __init__(self, time_out):
+        self.time_out = time_out #<- default 300 = 5 min
         self.elapsed = 0.0 # Abgelaufen
         self.running = False
         self.last_start_time = None

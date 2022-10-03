@@ -59,12 +59,17 @@ def befor_the_game_start(item_p, player_array):
             if event.type == pygame.JOYBUTTONUP:
                 if event.joy == 0:
                     start_p_1 = True
+                    joysticks[0].rumble(1,1,150)
                 if event.joy == 1:
                     start_p_2 = True
+                    joysticks[1].rumble(1,1,150)
                 if event.joy == 2:
                     start_p_3 = True
+                    joysticks[2].rumble(1,1,150)
                 if event.joy == 3:
                     start_p_4 = True
+                    joysticks[3].rumble(1,1,150)
+
                 # VVV Kann eventuell verkürtzt werden
                 if pygame.joystick.get_count() == 2:
                     if ((start_p_1 == True) and (start_p_2 == True)):
@@ -124,8 +129,12 @@ def befor_the_game_start(item_p, player_array):
         player_1_png_rec = player_1_png.get_rect()
         player_1_png_rec.center = (150, (screen.H - 150))
         screen.screen.blit(player_1_png, player_1_png_rec)
+
         # Joystick player 1
         if (controller_count >= 1):
+            #Joystick Player
+            player_array[0].joystick_add(joysticks[0])
+            #print(player_array[0].joystick)
             if (start_p_1 == False):
                 j_player_1_png_rec = joystick_png.get_rect()
                 j_player_1_png_rec.center = (430, (screen.H - 120))
@@ -144,6 +153,7 @@ def befor_the_game_start(item_p, player_array):
 
         # Joystick player 2
         if (controller_count >= 2):
+            player_array[1].joystick_add(joysticks[1])
             # Not Start
             if (start_p_2 == False):
                 j_player_2_png_rec = joystick_png.get_rect()
@@ -165,6 +175,7 @@ def befor_the_game_start(item_p, player_array):
 
             # Joystick player 3
             if (controller_count >= 3):
+                player_array[2].joystick_add(joysticks[2])
                 if (start_p_3 == False):  # Not start
                     j_player_3_png_rec = joystick_png.get_rect()
                     j_player_3_png_rec.center = (430, 170)
@@ -185,6 +196,7 @@ def befor_the_game_start(item_p, player_array):
 
             # Joystick player 4
             if (controller_count == 4):
+                player_array[3].joystick_add(joysticks[3])
                 if (start_p_4 == False):  # Not Start
                     j_player_4_png_rec = joystick_png.get_rect()
                     j_player_4_png_rec.center = ((screen.W - 450), 170)

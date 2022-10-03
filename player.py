@@ -55,6 +55,7 @@ class player(objekt):
             self.speed_item_pos_y = (screen.H/ 2) - 265
 
         #For all player
+        self.joystick = None
         self.name = name
         self.frame = 10
         self.points = 0
@@ -120,6 +121,12 @@ class player(objekt):
         self.points = 0
         self.speed = 1
         self.speed_point = 0
+
+    def joystick_add(self,joysick):
+        print("1.", joysick, self.joystick)
+        self.joystick = joysick
+        print("2.", joysick, self.joystick)
+
 
     def start(self):
         self.draw_player()
@@ -223,11 +230,13 @@ class player(objekt):
             self.pos_y = 0
 
     # Behavior
+    #?
     def acquire_item_by_bumping(self, other_pos):
         if (((self.pos_x + self.size_x) > other_pos[0]) and (self.pos_x < (other_pos[0] + other_pos[2])) and (
                 (self.pos_y + self.size_y) > other_pos[1]) and (self.pos_y < (other_pos[1]) + other_pos[3])):
             self.points += 1
             return True
+    #?
 
     def print_speedpoints(self):
         #Point State

@@ -46,12 +46,23 @@ class item_point(item):
                     sound().blue_item()
                     count += 1
                     player_list[x].points += 1
+
+                    #haptisches feedback for blue
+                    if not player_list[x].joystick == None:
+                        player_list[x].joystick.rumble(0.1,0.1,280)
+
                 #Speed
                 elif (witch_item == 2):
                     self.acquire()
                     sound().speed_item()
                     player_list[x].speed += 0.5
                     player_list[x].speed_point += 1
+                    #haptisches feedback for speed
+                    if not player_list[x].joystick == None:
+                        player_list[x].joystick.rumble(1,1,100)
+                        player_list[x].joystick.rumble(2,2,200)
+                        player_list[x].joystick.rumble(3,3,300)
+                        player_list[x].joystick.rumble(4,4,400)
                     return True
 
                 else: print("ERROR: False entry: acquire_by_include(self, player_list, witch_item) ->witch_item<-")
@@ -89,6 +100,9 @@ class item_destroy(item):
                 player_list[x].speed = 1
                 player_list[x].speed_point = 0
                 self.acquire()
+                # haptisches feedback for withe
+                if not player_list[x].joystick == None:
+                    player_list[x].joystick.rumble(1, 1, 550)
 
     def random_direc(self):
         ran_number = randint(0, 9)
@@ -218,4 +232,11 @@ class item_fiep(item):
                     if not x == x_2:
                         player_list[x_2].pos_x = randint(0, screen.W)
                         player_list[x_2].pos_y = randint(0, screen.H)
+
+                    #haptisches feedback for yellow
+                    if not player_list[x_2].joystick == None:
+                        player_list[x_2].joystick.rumble(1,1,500)
+
+                    if not player_list[x].joystick == None:
+                        player_list[x].joystick.rumble(0.5,0.5,200)
                 self.acquire()
