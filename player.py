@@ -3,6 +3,7 @@ import item
 from objekte import *
 from random import randint
 from soundandmusic import *
+import screen
 
 class player(objekt):
     def __init__(self, name):
@@ -55,6 +56,9 @@ class player(objekt):
             self.speed_item_pos_y = (screen.H/ 2) - 265
 
         #For all player
+
+        self.secure_quadrat_koordinaen = [(self.pos_x - 100),(self.pos_y - 100)]
+
         self.joystick = None
         self.name = name
         self.frame = 10
@@ -129,6 +133,10 @@ class player(objekt):
 
 
     def start(self):
+        #draw secure
+        pygame.draw.rect(screen.screen, (25,25,25), [self.secure_quadrat_koordinaen[0], self.secure_quadrat_koordinaen[1], 300, 300], 1)
+        self.secure_quadrat_koordinaen = [(self.pos_x - 100),(self.pos_y - 100)]
+
         self.draw_player()
         self.edge_change()
         self.move()

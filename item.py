@@ -49,7 +49,7 @@ class item_point(item):
 
                     #haptisches feedback for blue
                     if not player_list[x].joystick == None:
-                        player_list[x].joystick.rumble(0.1,0.1,280)
+                        player_list[x].joystick.rumble(0.5,0.5,300)
 
                 #Speed
                 elif (witch_item == 2):
