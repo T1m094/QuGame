@@ -84,24 +84,43 @@ class item_destroy(item):
         self.frame = 0
 
 
-    def acquire(self):
+    def acquire(self, player_list):
 
         #Plyerlist and compare with point
         sound().destroy_item()
+
         self.pos_x = randint(0, (screen.W - 50))
         self.pos_y = randint(10, (screen.H - 50))
         self.size_x = randint(20, 550)
         self.size_y = randint(20, 550)
+
+
+        print("DEBUGG 1")
+        item_destroy = pygame.draw.rect(screen.screen, (25,25,25), [self.pos_x, self.pos_y, self.size_x, self.size_y], 1)
+        #Pos check if not in player
+        for x in range(len(player_list)):
+            print("player list:", player_list[x])
+            print(item_destroy.colliderect(player_list[x].secure_quadrat()))
+            if (item_destroy.colliderect(player_list[x].secure_quadrat())):
+               # self.pos_x = randint(0, (screen.W - 50))
+                #self.pos_y = randint(10, (screen.H - 50))
+                #self.size_x = randint(20, 550)
+                #self.size_y = randint(20, 550)
+                print("DEBUGG 3 <==========")
+
+        print("DEBUGG 4")
         self.speed = randint(1, 4)
         self.direction = self.random_direc()
-
+        print("DEBUGG 5")
+        del item_destroy
+        print("DEBUGG 6")
     def bumping(self, player_list):
         for x in range(len(player_list)):
             if (player_list[x].draw_player().colliderect(self.draw_player())):
                 #Player punish
                 player_list[x].speed = 1
                 player_list[x].speed_point = 0
-                self.acquire()
+                self.acquire(player_list)
                 # haptisches feedback for withe
                 if not player_list[x].joystick == None:
                     player_list[x].joystick.rumble(1, 1, 550)
@@ -131,6 +150,7 @@ class item_destroy(item):
             cp = copy.copy(self)
             cp.pos_x = (((x2) - screen.W) - self.size_x)
             cp.draw_player()
+
             for x in range(player_list_len):
                 if (player_list[x].draw_player().colliderect(cp.draw_player())):
                     # Player punisch
@@ -138,7 +158,7 @@ class item_destroy(item):
                     player_list[x].speed_point = 0
                     # DAMAGE
                     # Self
-                    self.acquire()
+                    self.acquire(player_list)
         if (self.pos_x  >= screen.W):
             del cp
             self.pos_x = 0
@@ -155,7 +175,7 @@ class item_destroy(item):
                     player_list[x].speed_point = 0
                     #DAMAGE
                     # Self
-                    self.acquire()
+                    self.acquire(player_list)
         if ((x2) <= 0):
             del cp
             self.pos_x = screen.W - x2 - 100
@@ -172,7 +192,7 @@ class item_destroy(item):
                     player_list[x].speed_point = 0
                     #DAMAGE
                     # Self
-                    self.acquire()
+                    self.acquire(player_list)
         if ((y2) <= 0):
             del cp
             self.pos_y = screen.H - self.size_y
@@ -189,7 +209,7 @@ class item_destroy(item):
                     player_list[x].speed_point = 0
                     #DAMAGE
                     # Self
-                    self.acquire()
+                    self.acquire(player_list)
         if (self.pos_y >= screen.H):
             del cp
             self.pos_y = 0

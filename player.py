@@ -131,10 +131,12 @@ class player(objekt):
         self.joystick = joysick
         print("2.", joysick, self.joystick)
 
-
+    def secure_quadrat(self):
+        return pygame.draw.rect(screen.screen, (25,25,25), [self.secure_quadrat_koordinaen[0], self.secure_quadrat_koordinaen[1], 300, 300], 1)
     def start(self):
         #draw secure
         pygame.draw.rect(screen.screen, (25,25,25), [self.secure_quadrat_koordinaen[0], self.secure_quadrat_koordinaen[1], 300, 300], 1)
+
         self.secure_quadrat_koordinaen = [(self.pos_x - 100),(self.pos_y - 100)]
 
         self.draw_player()
