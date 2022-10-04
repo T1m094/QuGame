@@ -59,11 +59,21 @@ def winner_display(player_array):
         text_point_4 = name_font.render(point_view, True, winner_array[3][0])
 
 
-    simple_player_1 = simple_player_winner(winner_array[0][0], ((screen.W/2) - 600),((screen.H) - 200))
+    #R
     simple_player_2 = simple_player_winner(winner_array[0][0], ((screen.W/2) + 500),((screen.H) - 200))
+    simple_player_21 = simple_player_winner(winner_array[0][0], ((screen.W/2) + 500),((screen.H) - 400))
+    simple_player_22 = simple_player_winner(winner_array[0][0], ((screen.W/2) + 500),((screen.H) - 600))
+    simple_player_23 = simple_player_winner(winner_array[0][0], ((screen.W/2) + 500),((screen.H) - 800))
+    simple_player_24 = simple_player_winner(winner_array[0][0], ((screen.W/2) + 500),((screen.H) - 1000))
 
+    #L
+    simple_player_1 = simple_player_winner(winner_array[0][0], ((screen.W/2) - 600),((screen.H) - 200))
     simple_player_11 = simple_player_winner(winner_array[0][0], ((screen.W/2) - 600),((screen.H) - 400))
-    simple_player_22 = simple_player_winner(winner_array[0][0], ((screen.W/2) + 500),((screen.H) - 400))
+    simple_player_12 = simple_player_winner(winner_array[0][0], ((screen.W/2) - 600),((screen.H) - 600))
+    simple_player_13 = simple_player_winner(winner_array[0][0], ((screen.W/2) - 600),((screen.H) - 800))
+    simple_player_14 = simple_player_winner(winner_array[0][0], ((screen.W/2) - 600),((screen.H) - 1000))
+
+
 
 
     while True:
@@ -163,7 +173,13 @@ def winner_display(player_array):
         simple_player_1.start()
         simple_player_2.start()
         simple_player_11.start()
+        simple_player_12.start()
+        simple_player_13.start()
+        simple_player_14.start()
+        simple_player_21.start()
         simple_player_22.start()
+        simple_player_23.start()
+        simple_player_24.start()
 
 
 

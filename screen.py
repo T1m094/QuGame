@@ -73,12 +73,21 @@ class templates():
         return button
 
     def sound_volume(self,bx, by, laenge, hoehe, farbe_normal, farbe_aktiv, vol):
+        '''
         #2
         bx_2 = bx + 125
         #3
         bx_3 = bx + 250
         #4
         bx_4 = bx + 375
+        '''
+
+        #2
+        bx_2 = bx + 133.33
+        #3
+        bx_3 = bx_2 + 133.33
+        #4
+        bx_4 = bx_3 + 133.33
 
         selcetion = 4
 

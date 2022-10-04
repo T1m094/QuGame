@@ -22,11 +22,16 @@ def settings_screen(mouse_presses):
     # Sound on off
     sound_bg_state = templates().button_change(button_x, button_y, 500, 60, (0, 155, 155), (0, 255, 255),language.tr().M3(3)[settings.settings.sound_background_state],80)   #TODO: tr ok
 
-    button_y += 65
+    button_y += 75
+
+    #Textfild Volume
+    templates().textfild(button_x, button_y, 500, 60, (0, 155, 155), language.tr().M3(5), 70)#TODO: tr ok
+
+    button_y += 75
 
     # Sound Volume
     sound_bg_vol = templates().sound_volume(button_x, button_y, 500, 100, (0, 155, 155), (0, 255, 255),soundandmusic.sound.get_bg_vol(templates))
-    print(sound_bg_vol)
+    button_y += 65
     button_y += 150
 
     #Text Back

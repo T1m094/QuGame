@@ -302,7 +302,7 @@ class simple_player_winner(objekt):
         self.size_x = 50
         self.size_y = 50
         self.frame = 8
-        self.speed = 2
+        self.speed = 0.5
     def start(self):
         self.draw_player()
         self.move()

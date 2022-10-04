@@ -85,6 +85,8 @@ class item_destroy(item):
 
 
     def acquire(self):
+
+        #Plyerlist and compare with point
         sound().destroy_item()
         self.pos_x = randint(0, (screen.W - 50))
         self.pos_y = randint(10, (screen.H - 50))
