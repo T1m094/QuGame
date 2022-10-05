@@ -135,7 +135,7 @@ class player(objekt):
         return pygame.draw.rect(screen.screen, (25,25,25), [self.secure_quadrat_koordinaen[0], self.secure_quadrat_koordinaen[1], 300, 300], 1)
     def start(self):
         #draw secure
-        pygame.draw.rect(screen.screen, (25,25,25), [self.secure_quadrat_koordinaen[0], self.secure_quadrat_koordinaen[1], 300, 300], 1)
+        pygame.draw.rect(screen.screen, (255,255,255), [self.secure_quadrat_koordinaen[0], self.secure_quadrat_koordinaen[1], 300, 300], 2)
 
         self.secure_quadrat_koordinaen = [(self.pos_x - 100),(self.pos_y - 100)]
 

@@ -178,7 +178,7 @@ class item_destroy(item):
                     self.acquire(player_list)
         if ((x2) <= 0):
             del cp
-            self.pos_x = screen.W - x2 - 100
+            self.pos_x = screen.W - (x2 + self.size_x)
 
         # Oben raus
         if ((self.pos_y  <= 0)):
