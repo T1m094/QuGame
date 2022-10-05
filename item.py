@@ -91,34 +91,32 @@ class item_destroy(item):
 
         self.pos_x = randint(0, (screen.W - 50))
         self.pos_y = randint(10, (screen.H - 50))
-        self.size_x = randint(20, 550)
-        self.size_y = randint(20, 550)
+        self.size_x = randint(20, 500)
+        self.size_y = randint(20, 500)
 
-
-        print("DEBUGG 1")
         item_destroy = pygame.draw.rect(screen.screen, (25,25,25), [self.pos_x, self.pos_y, self.size_x, self.size_y], 1)
+
         #Pos check if not in player
         for x in range(len(player_list)):
-            print("player list:", player_list[x])
+            print("player:", player_list[x].secure_quadrat())
+            print("destroy:", self.size_x, self.pos_y, self.size_x, self.size_y)
             print(item_destroy.colliderect(player_list[x].secure_quadrat()))
-            if (item_destroy.colliderect(player_list[x].secure_quadrat())):
-               # self.pos_x = randint(0, (screen.W - 50))
-                #self.pos_y = randint(10, (screen.H - 50))
-                #self.size_x = randint(20, 550)
-                #self.size_y = randint(20, 550)
-                print("DEBUGG 3 <==========")
 
-        print("DEBUGG 4")
+            if ( item_destroy.colliderect(player_list[x].secure_quadrat()) ):
+                self.pos_x = randint(0, (screen.W - 50))
+                self.pos_y = randint(10, (screen.H - 50))
+                self.size_x = randint(20, 550)
+                self.size_y = randint(20, 550)
+
         self.speed = randint(1, 4)
         self.direction = self.random_direc()
-        print("DEBUGG 5")
         del item_destroy
-        print("DEBUGG 6")
+
     def bumping(self, player_list):
         for x in range(len(player_list)):
             if (player_list[x].draw_player().colliderect(self.draw_player())):
                 #Player punish
-                player_list[x].speed = 1
+                player_list[x].speed = 4
                 player_list[x].speed_point = 0
                 self.acquire(player_list)
                 # haptisches feedback for withe
