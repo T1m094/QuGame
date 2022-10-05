@@ -89,6 +89,7 @@ class item_destroy(item):
         #Plyerlist and compare with point
         sound().destroy_item()
 
+
         self.pos_x = randint(0, (screen.W - 50))
         self.pos_y = randint(10, (screen.H - 50))
         self.size_x = randint(20, 500)
@@ -99,18 +100,22 @@ class item_destroy(item):
         player_list_draw = []
         for x in range(len(player_list)):
             print(player_list[x].secure_quadrat_koordinaten)
-            player_list_draw.append([player_list[x].secure_quadrat_koordinaten[0],player_list[x].secure_quadrat_koordinaten[1], 100,100])
-            print("2")
+            player_list_draw.append([player_list[x].secure_quadrat_koordinaten[0],player_list[x].secure_quadrat_koordinaten[1], 300,300])
+
 
         #Pos check if not in player
-        print("3")
-        print(item_destroy.collidelist(player_list_draw) == -1 )
-        if not ( item_destroy.collidelist(player_list_draw) == -1 ):
+
+
+        while not ( item_destroy.collidelist(player_list_draw) == (-1)):
+            print("T ", item_destroy.collidelist(player_list_draw))
             self.pos_x = randint(0, (screen.W - 50))
             self.pos_y = randint(10, (screen.H - 50))
             self.size_x = randint(20, 500)
             self.size_y = randint(20, 500)
-        print("4")
+            item_destroy = pygame.draw.rect(screen.screen, (25, 25, 25),
+                                            [self.pos_x, self.pos_y, self.size_x, self.size_y], 1)
+
+
         '''    
         for x in range(len(player_list)):
             print("player:", player_list[x].secure_quadrat())
