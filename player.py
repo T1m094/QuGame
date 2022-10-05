@@ -57,7 +57,7 @@ class player(objekt):
 
         #For all player
 
-        self.secure_quadrat_koordinaen = [(self.pos_x - 100),(self.pos_y - 100)]
+        self.secure_quadrat_koordinaten = [(self.pos_x - 100),(self.pos_y - 100)]
 
         self.joystick = None
         self.name = name
@@ -132,12 +132,12 @@ class player(objekt):
         print("2.", joysick, self.joystick)
 
     def secure_quadrat(self):
-        return pygame.draw.rect(screen.screen, (25,25,25), [self.secure_quadrat_koordinaen[0], self.secure_quadrat_koordinaen[1], 300, 300], 1)
+        return pygame.draw.rect(screen.screen, (25,25,25), [self.secure_quadrat_koordinaten[0], self.secure_quadrat_koordinaten[1], 300, 300], 1)
     def start(self):
         #draw secure
-        pygame.draw.rect(screen.screen, (255,255,255), [self.secure_quadrat_koordinaen[0], self.secure_quadrat_koordinaen[1], 300, 300], 2)
+        pygame.draw.rect(screen.screen, (255,255,255), [self.secure_quadrat_koordinaten[0], self.secure_quadrat_koordinaten[1], 300, 300], 2)
 
-        self.secure_quadrat_koordinaen = [(self.pos_x - 100),(self.pos_y - 100)]
+        self.secure_quadrat_koordinaten = [(self.pos_x - 100),(self.pos_y - 100)]
 
         self.draw_player()
         self.edge_change()

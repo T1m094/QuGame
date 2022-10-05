@@ -96,7 +96,22 @@ class item_destroy(item):
 
         item_destroy = pygame.draw.rect(screen.screen, (25,25,25), [self.pos_x, self.pos_y, self.size_x, self.size_y], 1)
 
+        player_list_draw = []
+        for x in range(len(player_list)):
+            print(player_list[x].secure_quadrat_koordinaten)
+            player_list_draw.append([player_list[x].secure_quadrat_koordinaten[0],player_list[x].secure_quadrat_koordinaten[1], 100,100])
+            print("2")
+
         #Pos check if not in player
+        print("3")
+        print(item_destroy.collidelist(player_list_draw) == -1 )
+        if not ( item_destroy.collidelist(player_list_draw) == -1 ):
+            self.pos_x = randint(0, (screen.W - 50))
+            self.pos_y = randint(10, (screen.H - 50))
+            self.size_x = randint(20, 500)
+            self.size_y = randint(20, 500)
+        print("4")
+        '''    
         for x in range(len(player_list)):
             print("player:", player_list[x].secure_quadrat())
             print("destroy:", self.size_x, self.pos_y, self.size_x, self.size_y)
@@ -107,7 +122,7 @@ class item_destroy(item):
                 self.pos_y = randint(10, (screen.H - 50))
                 self.size_x = randint(20, 550)
                 self.size_y = randint(20, 550)
-
+        '''
         self.speed = randint(1, 4)
         self.direction = self.random_direc()
         del item_destroy
@@ -116,7 +131,7 @@ class item_destroy(item):
         for x in range(len(player_list)):
             if (player_list[x].draw_player().colliderect(self.draw_player())):
                 #Player punish
-                player_list[x].speed = 4
+                player_list[x].speed = 1
                 player_list[x].speed_point = 0
                 self.acquire(player_list)
                 # haptisches feedback for withe
