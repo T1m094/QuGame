@@ -1,3 +1,5 @@
+import time
+
 import pygame.math
 import before_the_game_start
 from winner_display import *
@@ -61,7 +63,7 @@ def multiplayer_game_start(player_count):
         close = False
 
         timer_sound_timeout = True
-        timer_1 = MyTimer(300) #<- default 300 = 5 min
+        timer_1 = MyTimer(5) #<- default 300 = 5 min
 
 
         # Start menü
@@ -83,8 +85,7 @@ def multiplayer_game_start(player_count):
             '''
 
             if (seconds_current < 10):
-
-                if seconds_current % 1 > 0.5: # Time Blinking
+                if time.time() % 1 > 0.24: # Time Blinking
                     count_t = font.render(str(convert(seconds_current)), True, (0, 0, 0))
                 else:
                     count_t = font.render(str(convert(seconds_current)), True, (155, 25, 0))
@@ -97,7 +98,23 @@ def multiplayer_game_start(player_count):
                 count_t = font.render(str(convert(seconds_current)), True, (255, 255, 255))
 
             #End
-            if (seconds_current <= 0):
+            if (seconds_current <= 0.5):
+                count_t = font.render("TIME OUT", True, (255, 0, 0))
+                screen.screen.blit(count_t, (((screen.W / 2) - 100), (screen.H/2)))
+                pygame.display.flip()
+                while True:
+                    if not player_array[0].joystick == None:
+                        player_array[0].joystick.rumble(0.5, 0.5, 170)
+                    if not player_array[1].joystick == None:
+                        player_array[1].joystick.rumble(0.5, 0.5, 170)
+                    if not player_array[2].joystick == None:
+                        player_array[2].joystick.rumble(0.5, 0.5, 170)
+                    if not player_array[3].joystick == None:
+                        player_array[3].joystick.rumble(0.5, 0.5, 170)
+                    pygame.time.delay(2000)
+                    break
+
+
                 close = True
 
             screen.screen.blit(count_t, (((screen.W / 2) - 30), (screen.H - 50)))

@@ -59,10 +59,8 @@ class item_point(item):
                     player_list[x].speed_point += 1
                     #haptisches feedback for speed
                     if not player_list[x].joystick == None:
-                        player_list[x].joystick.rumble(1,1,100)
-                        player_list[x].joystick.rumble(2,2,200)
-                        player_list[x].joystick.rumble(3,3,300)
-                        player_list[x].joystick.rumble(4,4,400)
+                        player_list[x].joystick.rumble(0.5, 0.5, 450)
+
                     return True
 
                 else: print("ERROR: False entry: acquire_by_include(self, player_list, witch_item) ->witch_item<-")
@@ -172,6 +170,8 @@ class item_destroy(item):
             for x in range(player_list_len):
                 if (player_list[x].draw_player().colliderect(cp.draw_player())):
                     # Player punisch
+                    if not player_list[x].joystick == None:
+                        player_list[x].joystick.rumble(1, 1, 550)
                     player_list[x].speed = 1
                     player_list[x].speed_point = 0
                     # DAMAGE
@@ -189,6 +189,8 @@ class item_destroy(item):
             for x in range(player_list_len):
                 if (player_list[x].draw_player().colliderect(cp.draw_player())):
                     # Player punisch
+                    if not player_list[x].joystick == None:
+                        player_list[x].joystick.rumble(1, 1, 550)
                     player_list[x].speed = 1
                     player_list[x].speed_point = 0
                     #DAMAGE
@@ -206,6 +208,8 @@ class item_destroy(item):
             for x in range(player_list_len):
                 if (player_list[x].draw_player().colliderect(cp.draw_player())):
                     # Player punisch
+                    if not player_list[x].joystick == None:
+                        player_list[x].joystick.rumble(1, 1, 550)
                     player_list[x].speed = 1
                     player_list[x].speed_point = 0
                     #DAMAGE
@@ -223,6 +227,8 @@ class item_destroy(item):
             for x in range(player_list_len):
                 if (player_list[x].draw_player().colliderect(cp.draw_player())):
                     # Player punisch
+                    if not player_list[x].joystick == None:
+                        player_list[x].joystick.rumble(1, 1, 550)
                     player_list[x].speed = 1
                     player_list[x].speed_point = 0
                     #DAMAGE
