@@ -50,7 +50,7 @@ class player(objekt):
             self.pos_x = (screen.W/2) - 50
             self.pos_y = (screen.H/2) + 200
             self.direction = 2
-            self.color = (38, 122, 240)
+            self.color = (63, 122, 240)
             # Speed Item
             self.speed_item_pos_x = (screen.W/2) - 15
             self.speed_item_pos_y = (screen.H/ 2) - 265
@@ -135,7 +135,7 @@ class player(objekt):
         return pygame.draw.rect(screen.screen, (25,25,25), [self.secure_quadrat_koordinaten[0], self.secure_quadrat_koordinaten[1], 300, 300], 1)
     def start(self):
         #draw secure
-        pygame.draw.rect(screen.screen, (255,255,255), [self.secure_quadrat_koordinaten[0], self.secure_quadrat_koordinaten[1], 300, 300], 2)
+       # pygame.draw.rect(screen.screen, (255,255,255), [self.secure_quadrat_koordinaten[0], self.secure_quadrat_koordinaten[1], 300, 300], 2)
 
         self.secure_quadrat_koordinaten = [(self.pos_x - 100),(self.pos_y - 100)]
 

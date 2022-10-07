@@ -232,13 +232,17 @@ class templates():
                 if (sound_bg_vol == 1):
                     settings.settings.sound_background_vol = 0.10
                     pygame.mixer.music.set_volume(settings.settings.sound_background_vol)
+                    settings.settings.sound_state_change(1)
                 if (sound_bg_vol == 2):
                     settings.settings.sound_background_vol = 0.40
                     pygame.mixer.music.set_volume(settings.settings.sound_background_vol)
+                    settings.settings.sound_state_change(1)
                 if (sound_bg_vol == 3):
                     settings.settings.sound_background_vol = 0.60
                     pygame.mixer.music.set_volume(settings.settings.sound_background_vol)
+                    settings.settings.sound_state_change(1)
                 if (sound_bg_vol == 4):
                     settings.settings.sound_background_vol = 1
                     pygame.mixer.music.set_volume(settings.settings.sound_background_vol)
+                    settings.settings.sound_state_change(1)
             pygame.display.flip()

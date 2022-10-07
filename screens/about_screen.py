@@ -48,7 +48,7 @@ def about_screen(mouse_presses):
 
     screen.blit(text_surface, text_rec_res)
 
-    text = ["QuGame","_____","created by Timo Heinz","Sound:","Backgroundmusic Game created by:","Dario Boschetto","Backgroundmusic Menu", "https://www.musicfox.com/info/kostenlose-gemafreie-musik.php","Itemssounds:","Yellow Item: Andreas Bruch","https://soundbible.com/","Timeoutmusic:","https://mixkit.co/free-sound-effects"]
+    text = ["QuGame","_____","Sound:","Backgroundmusic Menu", "https://www.musicfox.com/info/kostenlose-gemafreie-musik.php","Timeoutmusic:","https://mixkit.co/free-sound-effects","Itemssounds:","https://soundbible.com/","Yellow Item:","Andreas Bruch","Backgroundmusic Game created by:","Dario Boschetto"," ","developt by:", "Timo Heinz"]
 
     x = 0
     pos_y = (H / 4) + 50 - 150
