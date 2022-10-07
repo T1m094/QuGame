@@ -1,3 +1,4 @@
+import time
 from random import randint
 from soundandmusic import *
 from  objekte import  *
@@ -77,9 +78,44 @@ class item_destroy(item):
         self.size_x = 400
         self.size_y = 40
         self.direction = 2
-        self.speed = 2
-        self.color = (255, 255, 255)
+        self.speed = randint(1,3)
+        self.color = (16, 185, 59)
         self.frame = 0
+
+        # Red blinking Quadrat
+        self.size = 25
+        self.color_blinking_off = (82,7,16)
+        self.color_blinking_on = (255,0,0)
+        self.color_blinking = self.color_blinking_off
+
+    def draw_red_quadrats(self, player_array):
+        #lo
+        pos_lo = [self.pos_x, self.pos_y]
+        #ro
+        pos_ro = [(self.pos_x + self.size_x - 25), self.pos_y]
+        #lu
+        pos_lu = [self.pos_x, (self.pos_y + self.size_y - 25)]
+        #ru
+        pos_ru = [(self.pos_x + self.size_x - 25),(self.pos_y + self.size_y - 25)]
+
+        pygame.draw.rect(screen.screen, self.color_blinking, [pos_lo[0],pos_lo[1],  self.size,self.size], self.frame)
+        pygame.draw.rect(screen.screen, self.color_blinking, [pos_ro[0],pos_ro[1], self.size,self.size], self.frame)
+        pygame.draw.rect(screen.screen, self.color_blinking, [pos_lu[0],pos_lu[1], self.size,self.size], self.frame)
+        pygame.draw.rect(screen.screen, self.color_blinking, [pos_ru[0],pos_ru[1], self.size,self.size], self.frame)
+
+
+        self.blinking_quadrat()
+
+
+
+
+    def blinking_quadrat(self):
+        if time.time() % 1 > 0.24:  # Time Blinking
+            self.color_blinking = self.color_blinking_off
+        else:
+            self.color_blinking = self.color_blinking_on
+
+
 
 
     def acquire(self, player_list):
@@ -150,6 +186,7 @@ class item_destroy(item):
 
     def start(self, player_list):
         self.draw_player()
+        self.draw_red_quadrats(player_list)
         self.edge_change(player_list)
         self.move()
         return self
@@ -166,7 +203,6 @@ class item_destroy(item):
             cp = copy.copy(self)
             cp.pos_x = (((x2) - screen.W) - self.size_x)
             cp.draw_player()
-
             for x in range(player_list_len):
                 if (player_list[x].draw_player().colliderect(cp.draw_player())):
                     # Player punisch
