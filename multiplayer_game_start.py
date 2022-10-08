@@ -63,7 +63,7 @@ def multiplayer_game_start(player_count):
         close = False
 
         timer_sound_timeout = True
-        timer_1 = MyTimer(300) #<- default 300 = 5 min
+        timer_1 = MyTimer(10) #<- default 300 = 5 min
 
 
         # Start menü
@@ -102,17 +102,22 @@ def multiplayer_game_start(player_count):
                 count_t = font.render("TIME OUT", True, (255, 0, 0))
                 screen.screen.blit(count_t, (((screen.W / 2) - 100), (screen.H/2)))
                 pygame.display.flip()
+
                 while True:
                     if not player_array[0].joystick == None:
                         player_array[0].joystick.rumble(0.5, 0.5, 170)
                     if not player_array[1].joystick == None:
                         player_array[1].joystick.rumble(0.5, 0.5, 170)
-                    if not player_array[2].joystick == None:
-                        player_array[2].joystick.rumble(0.5, 0.5, 170)
-                    if not player_array[3].joystick == None:
-                        player_array[3].joystick.rumble(0.5, 0.5, 170)
+                    if (player_count > 2):
+                        if not player_array[2].joystick == None:
+                            player_array[2].joystick.rumble(0.5, 0.5, 170)
+                    if (player_count > 3):
+                        if not player_array[3].joystick == None:
+                            player_array[3].joystick.rumble(0.5, 0.5, 170)
+
                     pygame.time.delay(2000)
                     break
+
 
 
                 close = True
@@ -174,7 +179,6 @@ def multiplayer_game_start(player_count):
 
         if( winner_display(player_array) ): #REtun Again FALSE = MAIN TRUE = AGAIN
             #AGAIN
-
             #POS U dirc
             for x in range(len(player_array)):
                     name_current_player = player_array[x].name
