@@ -127,9 +127,7 @@ class player(objekt):
         self.speed_point = 0
 
     def joystick_add(self,joysick):
-        print("1.", joysick, self.joystick)
         self.joystick = joysick
-        print("2.", joysick, self.joystick)
 
     def secure_quadrat(self):
         return pygame.draw.rect(screen.screen, (25,25,25), [self.secure_quadrat_koordinaten[0], self.secure_quadrat_koordinaten[1], 300, 300], 1)

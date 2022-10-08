@@ -77,8 +77,8 @@ class item_destroy(item):
         self.pos_y = randint(10, (screen.H - 50))
         self.size_x = 400
         self.size_y = 40
-        self.direction = 2
-        self.speed = randint(1,3)
+        self.direction = 8
+        self.speed = 2
         self.color = (16, 185, 59)
         self.frame = 0
 
@@ -88,23 +88,51 @@ class item_destroy(item):
         self.color_blinking_on = (255,0,0)
         self.color_blinking = self.color_blinking_off
 
-    def draw_red_quadrats(self, player_array):
         #lo
-        pos_lo = [self.pos_x, self.pos_y]
+        self.pos_lo = [self.pos_x, self.pos_y]
         #ro
-        pos_ro = [(self.pos_x + self.size_x - 25), self.pos_y]
+        self.pos_ro = [(self.pos_x + self.size_x - 25), self.pos_y]
         #lu
-        pos_lu = [self.pos_x, (self.pos_y + self.size_y - 25)]
+        self.pos_lu = [self.pos_x, (self.pos_y + self.size_y - 25)]
         #ru
-        pos_ru = [(self.pos_x + self.size_x - 25),(self.pos_y + self.size_y - 25)]
+        self.pos_ru = [(self.pos_x + self.size_x - 25),(self.pos_y + self.size_y - 25)]
 
-        pygame.draw.rect(screen.screen, self.color_blinking, [pos_lo[0],pos_lo[1],  self.size,self.size], self.frame)
-        pygame.draw.rect(screen.screen, self.color_blinking, [pos_ro[0],pos_ro[1], self.size,self.size], self.frame)
-        pygame.draw.rect(screen.screen, self.color_blinking, [pos_lu[0],pos_lu[1], self.size,self.size], self.frame)
-        pygame.draw.rect(screen.screen, self.color_blinking, [pos_ru[0],pos_ru[1], self.size,self.size], self.frame)
+        self.lo = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lo[0],self.pos_lo[1],  self.size,self.size], self.frame)
+        self.ro = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ro[0],self.pos_ro[1],  self.size,self.size], self.frame)
+        self.lu = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lu[0],self.pos_lu[1],  self.size,self.size], self.frame)
+        self.ru = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ru[0],self.pos_ru[1],  self.size,self.size], self.frame)
 
 
+    def draw_player(self):
+
+        draw = pygame.draw.rect(screen.screen, self.color, [self.pos_x, self.pos_y, self.size_x,self.size_y], self.frame)
+        self.update_red_quadrats()
+        self.draw_red_quadrats()
+
+        return draw
+    def update_red_quadrats(self):
+        self.pos_lo = [self.pos_x, self.pos_y]
+        #ro
+        self.pos_ro = [(self.pos_x + self.size_x - 25), self.pos_y]
+        #lu
+        self.pos_lu = [self.pos_x, (self.pos_y + self.size_y - 25)]
+        #ru
+        self.pos_ru = [(self.pos_x + self.size_x - 25),(self.pos_y + self.size_y - 25)]
+
+
+        self.lo = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lo[0],self.pos_lo[1],  self.size,self.size], self.frame)
+        self.ro = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ro[0],self.pos_ro[1],  self.size,self.size], self.frame)
+        self.lu = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lu[0],self.pos_lu[1],  self.size,self.size], self.frame)
+        self.ru = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ru[0],self.pos_ru[1],  self.size,self.size], self.frame)
+
+
+    def draw_red_quadrats(self):
+        self.lo = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lo[0],self.pos_lo[1],  self.size,self.size], self.frame)
+        pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ro[0],self.pos_ro[1], self.size,self.size], self.frame)
+        pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lu[0],self.pos_lu[1], self.size,self.size], self.frame)
+        pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ru[0],self.pos_ru[1], self.size,self.size], self.frame)
         self.blinking_quadrat()
+
 
 
 
@@ -185,7 +213,8 @@ class item_destroy(item):
 
     def start(self, player_list):
         self.draw_player()
-        self.draw_red_quadrats(player_list)
+        self.update_red_quadrats()
+        self.draw_red_quadrats()
         self.edge_change(player_list)
         self.move()
         return self
@@ -199,9 +228,11 @@ class item_destroy(item):
 
        # Rechts raus
         if ((x2) >= screen.W):
+            print("D 1")
             cp = copy.copy(self)
             cp.pos_x = (((x2) - screen.W) - self.size_x)
             cp.draw_player()
+
             for x in range(player_list_len):
                 if (player_list[x].draw_player().colliderect(cp.draw_player())):
                     # Player punisch

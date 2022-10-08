@@ -19,8 +19,6 @@ def winner_display(player_array):
     winner_array.sort(key=lambda x: x[1])
     #Reihenfolge umkehren
     winner_array = winner_array[::-1]
-
-    print(winner_array[0][2])
     #Show Score
     #Print Frame
     #     1                                  5
