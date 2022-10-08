@@ -73,11 +73,11 @@ class item_point(item):
 
 class item_destroy(item):
     def __init__(self):
-        self.pos_x = randint(0, (screen.W - 50))
-        self.pos_y = randint(10, (screen.H - 50))
-        self.size_x = 400
-        self.size_y = 40
-        self.direction = 8
+        self.pos_x = 0
+        self.pos_y = 0
+        self.size_x = screen.W
+        self.size_y = 100
+        self.direction = 2
         self.speed = 2
         self.color = (16, 185, 59)
         self.frame = 0
@@ -154,8 +154,8 @@ class item_destroy(item):
 
         self.pos_x = randint(0, (screen.W - 50))
         self.pos_y = randint(10, (screen.H - 50))
-        self.size_x = randint(20, 500)
-        self.size_y = randint(20, 500)
+        self.size_x = randint(100, 500)
+        self.size_y = randint(100, 500)
 
         item_destroy = pygame.draw.rect(screen.screen, (25,25,25), [self.pos_x, self.pos_y, self.size_x, self.size_y], 1)
 

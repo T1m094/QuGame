@@ -63,7 +63,7 @@ def multiplayer_game_start(player_count):
         close = False
 
         timer_sound_timeout = True
-        timer_1 = MyTimer(10) #<- default 300 = 5 min
+        timer_1 = MyTimer(300) #<- default 300 = 5 min
 
 
         # Start menü
