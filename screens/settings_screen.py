@@ -40,7 +40,6 @@ def settings_screen(mouse_presses):
     mouse_cursor()
 
     if mouse_presses:
-        print("klick")
         if b0.collidepoint(mouse()):
             return 0
         # Language
@@ -51,23 +50,22 @@ def settings_screen(mouse_presses):
 
         # SoundVOl
         if (sound_bg_vol == 1):
-            soundandmusic.sound.change_bg_vol(0.10)
+            soundandmusic.sound.change_bg_vol(0.20)
+            settings.settings.sound_on(settings)
 
         if (sound_bg_vol == 2):
             soundandmusic.sound.change_bg_vol(0.40)
+            settings.settings.sound_on(settings)
 
         if (sound_bg_vol == 3):
-            print("BG_vol = 3")
             soundandmusic.sound.change_bg_vol(0.60)
-
+            settings.settings.sound_on(settings)
         if (sound_bg_vol == 4):
-            print("BG_vol = 4")
             soundandmusic.sound.change_bg_vol(1)
+            settings.settings.sound_on(settings)
 
         # SOUND State
         if (sound_bg_state == 1):
-            print("sound 1")
             settings.settings.sound_state_change(1)
         if (sound_bg_state == 0):
-            print("sound 0")
             settings.settings.sound_state_change(0)

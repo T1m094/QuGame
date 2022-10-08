@@ -68,7 +68,7 @@ def multiplayer_game_start(player_count):
 
         # Start menü
         controller_count = before_the_game_start.befor_the_game_start(item_p, player_array)
-        print(controller_count)
+
 
         sound.sound_bg_play_2()
         timer_1.start()

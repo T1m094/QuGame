@@ -6,6 +6,10 @@ class settings():
     sound_background_state = 1
     sound_background_vol = 1
 
+    def sound_on(self):
+        if settings.sound_background_state == 0:
+            settings.sound_state_change(1)
+
     def sound_state_change(change): # 0 == links 1 == rechts
         if change == 1:
             settings.sound_background_state += 1

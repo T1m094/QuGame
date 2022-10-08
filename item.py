@@ -133,7 +133,6 @@ class item_destroy(item):
 
         player_list_draw = []
         for x in range(len(player_list)):
-            print(player_list[x].secure_quadrat_koordinaten)
             player_list_draw.append([player_list[x].secure_quadrat_koordinaten[0],player_list[x].secure_quadrat_koordinaten[1], 300,300])
 
 
@@ -141,7 +140,7 @@ class item_destroy(item):
 
 
         while not ( item_destroy.collidelist(player_list_draw) == (-1)):
-            print("T ", item_destroy.collidelist(player_list_draw))
+
             self.pos_x = randint(0, (screen.W - 50))
             self.pos_y = randint(10, (screen.H - 50))
             self.size_x = randint(20, 500)
