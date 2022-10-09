@@ -84,7 +84,7 @@ class item_destroy(item):
 
         # Red blinking Quadrat
         self.size = 25
-        self.color_blinking_off = (40,10,10)
+        self.color_blinking_off = (60,20,20)
 
         self.color_blinking_on = (255,0,0)
         self.color_blinking = self.color_blinking_off
@@ -118,16 +118,16 @@ class item_destroy(item):
         print("test 1")
 
         if self.color_blinking == self.color_blinking_on:
-            for x in range(0, 40):
+            for x in range(0, 60):
 
                 pos_x -= 0.5
                 pos_y -= 0.5
                 size_x += 1
                 size_y += 1
 
-                rot -= 10
-                blau -= 10
-                gruen -= 10
+                rot -= 8
+                blau -= 8
+                gruen -= 8
                 print(rot, blau, gruen)
                 if rot < 0:
                     rot = 0
