@@ -73,18 +73,19 @@ class item_point(item):
 
 class item_destroy(item):
     def __init__(self):
-        self.pos_x = 0
-        self.pos_y = 0
-        self.size_x = screen.W
-        self.size_y = 100
+        self.pos_x = (screen.W/2) + 500
+        self.pos_y = 40
+        self.size_x = 920
+        self.size_y = 400
         self.direction = 2
         self.speed = 2
-        self.color = (16, 185, 59)
+        self.color = (150,150,150)#(16, 185, 59)
         self.frame = 0
 
         # Red blinking Quadrat
         self.size = 25
-        self.color_blinking_off = (82,7,16)
+        self.color_blinking_off = (40,10,10)
+
         self.color_blinking_on = (255,0,0)
         self.color_blinking = self.color_blinking_off
 
@@ -106,6 +107,37 @@ class item_destroy(item):
     def draw_player(self):
 
         draw = pygame.draw.rect(screen.screen, self.color, [self.pos_x, self.pos_y, self.size_x,self.size_y], self.frame)
+
+        rot = self.color_blinking[0]
+        blau = self.color_blinking[1]
+        gruen = self.color_blinking[2]
+        pos_x = self.pos_x
+        pos_y = self.pos_y
+        size_x = self.size_x
+        size_y = self.size_y
+        print("test 1")
+
+        if self.color_blinking == self.color_blinking_on:
+            for x in range(0, 40):
+
+                pos_x -= 0.5
+                pos_y -= 0.5
+                size_x += 1
+                size_y += 1
+
+                rot -= 10
+                blau -= 10
+                gruen -= 10
+                print(rot, blau, gruen)
+                if rot < 0:
+                    rot = 0
+                if blau < 0:
+                    blau = 0
+                if gruen < 0:
+                    gruen = 0
+
+                pygame.draw.rect(screen.screen, (rot,gruen,blau), [pos_x, pos_y, size_x,size_y], 2)
+
         self.update_red_quadrats()
         self.draw_red_quadrats()
 
@@ -143,6 +175,22 @@ class item_destroy(item):
         else:
             self.color_blinking = self.color_blinking_on
 
+    def punish(self, player):
+        # haptisches feedback for withe
+        if not player.joystick == None:
+            player.joystick.rumble(1, 1, 550)
+
+        if ( player.speed_point == 0 ):
+            player.speed = 1
+            player.speed_point = 0
+        if ( ( player.speed_point > 0 ) and ( player.speed_point <= 3 )):
+            player.speed = 1
+            player.speed_point = 0
+        elif ( player.speed_point > 3 ):
+            player.speed -= 2
+            player.speed_point -= 4
+            if not ( player.points == 0):
+                player.points -= 1
 
 
 
@@ -189,20 +237,16 @@ class item_destroy(item):
                 self.size_x = randint(20, 550)
                 self.size_y = randint(20, 550)
         '''
-        self.speed = randint(1, 4)
+        self.speed = randint(2, 4)
         self.direction = self.random_direc()
         del item_destroy
 
     def bumping(self, player_list):
         for x in range(len(player_list)):
             if (player_list[x].draw_player().colliderect(self.draw_player())):
-                #Player punish
-                player_list[x].speed = 1
-                player_list[x].speed_point = 0
                 self.acquire(player_list)
-                # haptisches feedback for withe
-                if not player_list[x].joystick == None:
-                    player_list[x].joystick.rumble(1, 1, 550)
+                self.punish(player_list[x])
+
 
     def random_direc(self):
         ran_number = randint(0, 9)
@@ -232,17 +276,10 @@ class item_destroy(item):
             cp = copy.copy(self)
             cp.pos_x = (((x2) - screen.W) - self.size_x)
             cp.draw_player()
-
             for x in range(player_list_len):
                 if (player_list[x].draw_player().colliderect(cp.draw_player())):
-                    # Player punisch
-                    if not player_list[x].joystick == None:
-                        player_list[x].joystick.rumble(1, 1, 550)
-                    player_list[x].speed = 1
-                    player_list[x].speed_point = 0
-                    # DAMAGE
-                    # Self
                     self.acquire(player_list)
+                    self.punish(player_list[x])
         if (self.pos_x  >= screen.W):
             del cp
             self.pos_x = 0
@@ -254,14 +291,8 @@ class item_destroy(item):
             cp.draw_player()
             for x in range(player_list_len):
                 if (player_list[x].draw_player().colliderect(cp.draw_player())):
-                    # Player punisch
-                    if not player_list[x].joystick == None:
-                        player_list[x].joystick.rumble(1, 1, 550)
-                    player_list[x].speed = 1
-                    player_list[x].speed_point = 0
-                    #DAMAGE
-                    # Self
                     self.acquire(player_list)
+                    self.punish(player_list[x])
         if ((x2) <= 0):
             del cp
             self.pos_x = screen.W - (x2 + self.size_x)
@@ -273,14 +304,8 @@ class item_destroy(item):
             cp.draw_player()
             for x in range(player_list_len):
                 if (player_list[x].draw_player().colliderect(cp.draw_player())):
-                    # Player punisch
-                    if not player_list[x].joystick == None:
-                        player_list[x].joystick.rumble(1, 1, 550)
-                    player_list[x].speed = 1
-                    player_list[x].speed_point = 0
-                    #DAMAGE
-                    # Self
                     self.acquire(player_list)
+                    self.punish(player_list[x])
         if ((y2) <= 0):
             del cp
             self.pos_y = screen.H - self.size_y
@@ -292,14 +317,8 @@ class item_destroy(item):
             cp.draw_player()
             for x in range(player_list_len):
                 if (player_list[x].draw_player().colliderect(cp.draw_player())):
-                    # Player punisch
-                    if not player_list[x].joystick == None:
-                        player_list[x].joystick.rumble(1, 1, 550)
-                    player_list[x].speed = 1
-                    player_list[x].speed_point = 0
-                    #DAMAGE
-                    # Self
                     self.acquire(player_list)
+                    self.punish(player_list[x])
         if (self.pos_y >= screen.H):
             del cp
             self.pos_y = 0
