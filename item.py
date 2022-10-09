@@ -219,8 +219,8 @@ class item_destroy(item):
 
             self.pos_x = randint(0, (screen.W - 50))
             self.pos_y = randint(10, (screen.H - 50))
-            self.size_x = randint(20, 500)
-            self.size_y = randint(20, 500)
+            self.size_x = randint(100, 500)
+            self.size_y = randint(100, 500)
             item_destroy = pygame.draw.rect(screen.screen, (25, 25, 25),
                                             [self.pos_x, self.pos_y, self.size_x, self.size_y], 1)
 
