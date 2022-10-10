@@ -115,7 +115,6 @@ class item_destroy(item):
         pos_y = self.pos_y
         size_x = self.size_x
         size_y = self.size_y
-        print("test 1")
 
         if self.color_blinking == self.color_blinking_on:
             for x in range(0, 60):
@@ -128,7 +127,7 @@ class item_destroy(item):
                 rot -= 8
                 blau -= 8
                 gruen -= 8
-                print(rot, blau, gruen)
+
                 if rot < 0:
                     rot = 0
                 if blau < 0:
@@ -224,19 +223,6 @@ class item_destroy(item):
             item_destroy = pygame.draw.rect(screen.screen, (25, 25, 25),
                                             [self.pos_x, self.pos_y, self.size_x, self.size_y], 1)
 
-
-        '''    
-        for x in range(len(player_list)):
-            print("player:", player_list[x].secure_quadrat())
-            print("destroy:", self.size_x, self.pos_y, self.size_x, self.size_y)
-            print(item_destroy.colliderect(player_list[x].secure_quadrat()))
-
-            if ( item_destroy.colliderect(player_list[x].secure_quadrat()) ):
-                self.pos_x = randint(0, (screen.W - 50))
-                self.pos_y = randint(10, (screen.H - 50))
-                self.size_x = randint(20, 550)
-                self.size_y = randint(20, 550)
-        '''
         self.speed = randint(2, 4)
         self.direction = self.random_direc()
         del item_destroy
@@ -272,7 +258,6 @@ class item_destroy(item):
 
        # Rechts raus
         if ((x2) >= screen.W):
-            print("D 1")
             cp = copy.copy(self)
             cp.pos_x = (((x2) - screen.W) - self.size_x)
             cp.draw_player()
