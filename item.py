@@ -6,6 +6,7 @@ import screen
 
 class item(objekt):
     def __init__(self, pos_x, pos_y, size_x, size_y, direction, speed, points, color, frame):
+
         self.pos_x = pos_x
         self.pos_y = pos_y
         self.size_x = size_x
@@ -16,6 +17,7 @@ class item(objekt):
         self.color = color
         self.frame = frame
         objekt.count_item += 1
+
     def acquire(self):
         self.pos_x = randint(50, (screen.W - self.size_x - 50))
         self.pos_y = randint(50, (screen.H - self.size_y - 50))
@@ -24,6 +26,7 @@ class item(objekt):
 #Point and Speed
 class item_point(item):
     def __init__(self, pos_x, pos_y, size_x, size_y, direction, speed, points, color, frame):
+
         self.pos_x = pos_x
         self.pos_y = pos_y
         self.size_x = size_x
@@ -33,7 +36,6 @@ class item_point(item):
         self.points = points
         self.color = color
         self.frame = frame
-
 
     def acquire_by_include(self, player_list, witch_item): #1. Point 2.Speed
         count = 0
@@ -55,6 +57,13 @@ class item_point(item):
                 #Speed
                 elif (witch_item == 2):
                     self.acquire()
+                    '''   
+                    /* SPEED ITEM soll nähe Spieler erscheinen 
+                    if (player_list[x].speed_point > 3)
+                        self.acquire()
+                    else:
+                        pass
+                                            '''
                     sound().speed_item()
                     player_list[x].speed += 0.5
                     player_list[x].speed_point += 1
@@ -180,10 +189,10 @@ class item_destroy(item):
             player.joystick.rumble(1, 1, 550)
 
         if ( player.speed_point == 0 ):
-            player.speed = 1
+            player.speed = 1.5
             player.speed_point = 0
         if ( ( player.speed_point > 0 ) and ( player.speed_point <= 3 )):
-            player.speed = 1
+            player.speed = 1.5
             player.speed_point = 0
         elif ( player.speed_point > 3 ):
             player.speed -= 2
@@ -255,6 +264,7 @@ class item_destroy(item):
         x2 = self.pos_x + self.size_x
         y2 = self.pos_y + self.size_y
         player_list_len = len(player_list)
+        print("TEST")
 
        # Rechts raus
         if ((x2) >= screen.W):
