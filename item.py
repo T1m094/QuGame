@@ -82,12 +82,21 @@ class item_point(item):
 
 class item_destroy(item):
     def __init__(self):
+        '''
         self.pos_x = (screen.W/2) + 500
         self.pos_y = 40
         self.size_x = 920
         self.size_y = 400
         self.direction = 2
         self.speed = 2
+        '''
+        self.pos_x = 10
+        self.pos_y = screen.H - 100
+        self.size_x = 920
+        self.size_y = 400
+        self.direction = 6
+        self.speed = 1
+
         self.color = (150,150,150)#(16, 185, 59)
         self.frame = 0
 
@@ -265,58 +274,111 @@ class item_destroy(item):
         y2 = self.pos_y + self.size_y
         player_list_len = len(player_list)
         print("TEST")
-
+        top = False
+        down = False
+        right = False
+        left = False
+        # Rechts und unten
+        # Rechts und oben
+        # Links  und oben
+        # Links und unten
        # Rechts raus
         if ((x2) >= screen.W):
-            cp = copy.copy(self)
-            cp.pos_x = (((x2) - screen.W) - self.size_x)
-            cp.draw_player()
+            right = True
+            cp_r = copy.copy(self)
+            cp_r.pos_x = (((x2) - screen.W) - self.size_x)
+            cp_r.color = (255,0,0)
+            cp_r.draw_player()
             for x in range(player_list_len):
-                if (player_list[x].draw_player().colliderect(cp.draw_player())):
+                if (player_list[x].draw_player().colliderect(cp_r.draw_player())):
                     self.acquire(player_list)
                     self.punish(player_list[x])
         if (self.pos_x  >= screen.W):
-            del cp
+            del cp_r
             self.pos_x = 0
 
         # Links raus
         if ((self.pos_x  <= 0)):
-            cp = copy.copy(self)
-            cp.pos_x = (screen.W + self.pos_x)
-            cp.draw_player()
+            left = True
+            cp_l = copy.copy(self)
+            cp_l.pos_x = (screen.W + self.pos_x)
+            cp_l.color = (0, 255, 0)
+            cp_l.draw_player()
             for x in range(player_list_len):
-                if (player_list[x].draw_player().colliderect(cp.draw_player())):
+                if (player_list[x].draw_player().colliderect(cp_l.draw_player())):
                     self.acquire(player_list)
                     self.punish(player_list[x])
         if ((x2) <= 0):
-            del cp
+            del cp_l
             self.pos_x = screen.W - (x2 + self.size_x)
 
         # Oben raus
         if ((self.pos_y  <= 0)):
-            cp = copy.copy(self)
-            cp.pos_y = (screen.H + self.pos_y)
-            cp.draw_player()
+            top = True
+            cp_t = copy.copy(self)
+            cp_t.pos_y = (screen.H + self.pos_y)
+            cp_t.color = (0, 0, 255)
+            cp_t.draw_player()
             for x in range(player_list_len):
-                if (player_list[x].draw_player().colliderect(cp.draw_player())):
+                if (player_list[x].draw_player().colliderect(cp_t.draw_player())):
                     self.acquire(player_list)
                     self.punish(player_list[x])
         if ((y2) <= 0):
-            del cp
+            del cp_t
             self.pos_y = screen.H - self.size_y
 
         # unten raus
         if (y2 >= screen.H):
-            cp = copy.copy(self)
-            cp.pos_y = (((y2) - screen.H) - self.size_y)
-            cp.draw_player()
+            down = True
+            cp_d = copy.copy(self)
+            cp_d.pos_y = (((y2) - screen.H) - self.size_y)
+            cp_d.color = (38, 122, 240)
+            cp_d.draw_player()
             for x in range(player_list_len):
-                if (player_list[x].draw_player().colliderect(cp.draw_player())):
+                if (player_list[x].draw_player().colliderect(cp_d.draw_player())):
                     self.acquire(player_list)
                     self.punish(player_list[x])
         if (self.pos_y >= screen.H):
-            del cp
+            del cp_d
             self.pos_y = 0
+
+        # Links und unten
+        if ( (left == True) and (down == True) ):
+            cp = copy.copy(self)
+            cp.pos_y = (((y2) - screen.H) - self.size_y)
+            cp.pos_x = (screen.W + self.pos_x)
+            cp.color = (0, 255, 255)
+            cp.draw_player()
+
+            #TODO: punisch
+
+        # Rechts und unten
+        if ( (right == True) and (down == True) ):
+            print("JETZT 1")
+            cp = copy.copy(self)
+            print("JETZT 2")
+            cp.pos_y = (((y2) - screen.H) - self.size_y)
+            cp.pos_x = (((x2) - screen.W) - self.size_x)
+            print("JETZT 3")
+            cp.color = (0, 255, 255)
+            print("JETZT 4")
+            cp.draw_player()
+
+            #TODO: punisch
+            # Links  und oben
+            if ((left == True) and (top == True)):
+                pass
+            # Rechts  und oben
+            if ((right== True) and (top == True)):
+                pass
+            '''
+            cp_r.pos_x = (((x2) - screen.W) - self.size_x)
+            cp_l.pos_x = (screen.W + self.pos_x)
+            cp_t.pos_y = (screen.H + self.pos_y)
+            cp_d.pos_y = (((y2) - screen.H) - self.size_y)
+           '''
+
+        print("Oben: ", top," Unten: ", down," Liks: ", left, " Rechts: ", right)
 
     def change_direction(self, direction):
         #TODO nach einer zufälling Zeit von 5 - 30 sec soll es die richtung wechseln
