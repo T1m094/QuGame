@@ -90,11 +90,11 @@ class item_destroy(item):
         self.direction = 2
         self.speed = 2
         '''
-        self.pos_x = 10
+        self.pos_x = screen.W - 100
         self.pos_y = screen.H - 100
-        self.size_x = 920
+        self.size_x = 200
         self.size_y = 400
-        self.direction = 6
+        self.direction = 8
         self.speed = 1
 
         self.color = (150,150,150)#(16, 185, 59)
@@ -273,7 +273,6 @@ class item_destroy(item):
         x2 = self.pos_x + self.size_x
         y2 = self.pos_y + self.size_y
         player_list_len = len(player_list)
-        print("TEST")
         top = False
         down = False
         right = False
@@ -282,9 +281,9 @@ class item_destroy(item):
         # Rechts und oben
         # Links  und oben
         # Links und unten
-       # Rechts raus
+       # Links raus
         if ((x2) >= screen.W):
-            right = True
+            left = True
             cp_r = copy.copy(self)
             cp_r.pos_x = (((x2) - screen.W) - self.size_x)
             cp_r.color = (255,0,0)
@@ -297,9 +296,9 @@ class item_destroy(item):
             del cp_r
             self.pos_x = 0
 
-        # Links raus
+        # Rechts raus
         if ((self.pos_x  <= 0)):
-            left = True
+            rigt = True
             cp_l = copy.copy(self)
             cp_l.pos_x = (screen.W + self.pos_x)
             cp_l.color = (0, 255, 0)
@@ -342,8 +341,8 @@ class item_destroy(item):
             del cp_d
             self.pos_y = 0
 
-        # Links und unten
-        if ( (left == True) and (down == True) ):
+        # rechts und unten
+        if ( (right == True) and (down == True) ):
             cp = copy.copy(self)
             cp.pos_y = (((y2) - screen.H) - self.size_y)
             cp.pos_x = (screen.W + self.pos_x)
@@ -352,25 +351,26 @@ class item_destroy(item):
 
             #TODO: punisch
 
-        # Rechts und unten
-        if ( (right == True) and (down == True) ):
-            print("JETZT 1")
+        # link und unten
+        if ( (left == True) and (down == True) ):
             cp = copy.copy(self)
-            print("JETZT 2")
             cp.pos_y = (((y2) - screen.H) - self.size_y)
             cp.pos_x = (((x2) - screen.W) - self.size_x)
-            print("JETZT 3")
             cp.color = (0, 255, 255)
-            print("JETZT 4")
             cp.draw_player()
 
             #TODO: punisch
             # Links  und oben
-            if ((left == True) and (top == True)):
-                pass
+        if ((left == True) and (top == True)):
+            cp = copy.copy(self)
+            cp.pos_x = (((x2) - screen.W) - self.size_x)
+            cp.pos_y = (screen.H + self.pos_y)
+            cp.color = (0, 255, 255)
+            cp.draw_player()
+        
             # Rechts  und oben
-            if ((right== True) and (top == True)):
-                pass
+        if ((right== True) and (top == True)):
+            pass
             '''
             cp_r.pos_x = (((x2) - screen.W) - self.size_x)
             cp_l.pos_x = (screen.W + self.pos_x)
@@ -378,7 +378,7 @@ class item_destroy(item):
             cp_d.pos_y = (((y2) - screen.H) - self.size_y)
            '''
 
-        print("Oben: ", top," Unten: ", down," Liks: ", left, " Rechts: ", right)
+
 
     def change_direction(self, direction):
         #TODO nach einer zufälling Zeit von 5 - 30 sec soll es die richtung wechseln
