@@ -90,11 +90,11 @@ class item_destroy(item):
         self.direction = 2
         self.speed = 2
         '''
-        self.pos_x = screen.W - 100
-        self.pos_y = screen.H - 100
+        self.pos_x = screen.W/2
+        self.pos_y = -100
         self.size_x = 200
-        self.size_y = 400
-        self.direction = 8
+        self.size_y = 200
+        self.direction = 4
         self.speed = 1
 
         self.color = (150,150,150)#(16, 185, 59)
@@ -298,7 +298,7 @@ class item_destroy(item):
 
         # Rechts raus
         if ((self.pos_x  <= 0)):
-            rigt = True
+            right = True
             cp_l = copy.copy(self)
             cp_l.pos_x = (screen.W + self.pos_x)
             cp_l.color = (0, 255, 0)
@@ -370,7 +370,11 @@ class item_destroy(item):
         
             # Rechts  und oben
         if ((right== True) and (top == True)):
-            pass
+            cp = copy.copy(self)
+            cp.pos_x = (screen.W + self.pos_x)
+            cp.pos_y = (screen.H + self.pos_y)
+            cp.color = (0, 255, 255)
+            cp.draw_player()
             '''
             cp_r.pos_x = (((x2) - screen.W) - self.size_x)
             cp_l.pos_x = (screen.W + self.pos_x)
