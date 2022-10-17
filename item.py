@@ -91,7 +91,7 @@ class item_destroy(item):
         self.speed = 2
         '''
         self.pos_x = screen.W/2
-        self.pos_y = -100
+        self.pos_y = screen.H  - 100
         self.size_x = 200
         self.size_y = 200
         self.direction = 4
@@ -286,7 +286,6 @@ class item_destroy(item):
             left = True
             cp_r = copy.copy(self)
             cp_r.pos_x = (((x2) - screen.W) - self.size_x)
-            cp_r.color = (255,0,0)
             cp_r.draw_player()
             for x in range(player_list_len):
                 if (player_list[x].draw_player().colliderect(cp_r.draw_player())):
@@ -301,7 +300,6 @@ class item_destroy(item):
             right = True
             cp_l = copy.copy(self)
             cp_l.pos_x = (screen.W + self.pos_x)
-            cp_l.color = (0, 255, 0)
             cp_l.draw_player()
             for x in range(player_list_len):
                 if (player_list[x].draw_player().colliderect(cp_l.draw_player())):
@@ -316,7 +314,6 @@ class item_destroy(item):
             top = True
             cp_t = copy.copy(self)
             cp_t.pos_y = (screen.H + self.pos_y)
-            cp_t.color = (0, 0, 255)
             cp_t.draw_player()
             for x in range(player_list_len):
                 if (player_list[x].draw_player().colliderect(cp_t.draw_player())):
@@ -331,7 +328,6 @@ class item_destroy(item):
             down = True
             cp_d = copy.copy(self)
             cp_d.pos_y = (((y2) - screen.H) - self.size_y)
-            cp_d.color = (38, 122, 240)
             cp_d.draw_player()
             for x in range(player_list_len):
                 if (player_list[x].draw_player().colliderect(cp_d.draw_player())):
@@ -346,41 +342,44 @@ class item_destroy(item):
             cp = copy.copy(self)
             cp.pos_y = (((y2) - screen.H) - self.size_y)
             cp.pos_x = (screen.W + self.pos_x)
-            cp.color = (0, 255, 255)
             cp.draw_player()
-
-            #TODO: punisch
+            for x in range(player_list_len):
+                if (player_list[x].draw_player().colliderect(cp_d.draw_player())):
+                    self.acquire(player_list)
+                    self.punish(player_list[x])
 
         # link und unten
         if ( (left == True) and (down == True) ):
             cp = copy.copy(self)
             cp.pos_y = (((y2) - screen.H) - self.size_y)
             cp.pos_x = (((x2) - screen.W) - self.size_x)
-            cp.color = (0, 255, 255)
             cp.draw_player()
+            for x in range(player_list_len):
+                if (player_list[x].draw_player().colliderect(cp_d.draw_player())):
+                    self.acquire(player_list)
+                    self.punish(player_list[x])
 
-            #TODO: punisch
             # Links  und oben
         if ((left == True) and (top == True)):
             cp = copy.copy(self)
             cp.pos_x = (((x2) - screen.W) - self.size_x)
             cp.pos_y = (screen.H + self.pos_y)
-            cp.color = (0, 255, 255)
             cp.draw_player()
+            for x in range(player_list_len):
+                if (player_list[x].draw_player().colliderect(cp_d.draw_player())):
+                    self.acquire(player_list)
+                    self.punish(player_list[x])
         
             # Rechts  und oben
         if ((right== True) and (top == True)):
             cp = copy.copy(self)
             cp.pos_x = (screen.W + self.pos_x)
             cp.pos_y = (screen.H + self.pos_y)
-            cp.color = (0, 255, 255)
             cp.draw_player()
-            '''
-            cp_r.pos_x = (((x2) - screen.W) - self.size_x)
-            cp_l.pos_x = (screen.W + self.pos_x)
-            cp_t.pos_y = (screen.H + self.pos_y)
-            cp_d.pos_y = (((y2) - screen.H) - self.size_y)
-           '''
+            for x in range(player_list_len):
+                if (player_list[x].draw_player().colliderect(cp_d.draw_player())):
+                    self.acquire(player_list)
+                    self.punish(player_list[x])
 
 
 
