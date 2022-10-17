@@ -1,7 +1,6 @@
 import pygame
 import time
 class InputBox:
-
     def __init__(self, x, y, w, h, color, text):
         font = pygame.font.SysFont('''Arial Baltic''', 40)
 

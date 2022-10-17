@@ -187,7 +187,7 @@ class item_destroy(item):
 
 
     def blinking_quadrat(self):
-        if time.time() % 1 > 0.24:  # Time Blinking
+        if time.time() % 1 > 0.5:  # Time Blinking
             self.color_blinking = self.color_blinking_off
         else:
             self.color_blinking = self.color_blinking_on

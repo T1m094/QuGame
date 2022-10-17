@@ -1,5 +1,4 @@
 import time
-
 import pygame.math
 import before_the_game_start
 from winner_display import *
@@ -41,8 +40,6 @@ def multiplayer_game_start(player_count):
         for x in range(len(player_array)):
             player_array[x].start()
 
-
-
     #Init Item
     item_d = item_destroy()
     item_p = item_point(((screen.W/2) - 30), ((screen.H/2) - 30), 60, 60, 0, 0, 0, (0, 0, 255), 0)
@@ -58,17 +55,14 @@ def multiplayer_game_start(player_count):
 
         pygame.display.flip()
 
-
         #Variablen
         close = False
 
         timer_sound_timeout = True
         timer_1 = MyTimer(300) #<- default 300 = 5 min
 
-
         # Start menü
         controller_count = before_the_game_start.befor_the_game_start(item_p, player_array)
-
 
         sound.sound_bg_play_2()
         timer_1.start()
@@ -77,18 +71,12 @@ def multiplayer_game_start(player_count):
         while not close:
             seconds_current = timer_1.get_current_sec()
 
-            '''
-            if (seconds_current < 13):
-                if timer_sound_bg:
-                    sound.sound_bg_stopp()
-                    timer_sound_bg = False
-            '''
-
             if (seconds_current < 10):
-                if time.time() % 1 > 0.24: # Time Blinking
-                    count_t = font.render(str(convert(seconds_current)), True, (0, 0, 0))
-                else:
+                if time.time() % 1 > 0.5: # Time Blinking
                     count_t = font.render(str(convert(seconds_current)), True, (155, 25, 0))
+                else:
+                    count_t = font.render(str(convert(seconds_current)), True, (0, 0, 0))
+
                 '''
                 if timer_sound_timeout:
                     sound.time_out_play()
@@ -137,9 +125,9 @@ def multiplayer_game_start(player_count):
 
             #Logic
             #Item start
-            item_d.start(player_array)
             item_p.start()
             fiep.start()
+            item_d.start(player_array)
 
             #Player start
             start_player(player_array)

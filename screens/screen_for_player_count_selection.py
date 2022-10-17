@@ -6,19 +6,19 @@ def screen_for_player_count_selection(mouse_presses):
 
     # Two Player
     b1 = templates().button(button_x, (button_y - 120), 500, 100, (0, 155, 155), (0, 255, 255), language.tr().M2(0),
-                            80)  # TODO: tr ok
-    # TREE Player
+                            80)
+    # THREE Player
     b2 = templates().button(button_x, (button_y), 500, 100, (0, 155, 155), (0, 255, 255), language.tr().M2(1),
-                            80)  # TODO: tr ok
+                            80)
     # Four Player
     b3 = templates().button(button_x, (button_y + 120), 500, 100, (0, 155, 155), (0, 255, 255), language.tr().M2(2),
-                            80)  # TODO: tr ok
+                            80)
     # Online
     b4 = templates().button(button_x, (button_y + 240), 500, 100, (185, 185, 185), (155, 155, 155), language.tr().M2(3),
-                            80)  # TODO: tr ok #TODO:ONLINE
+                            80)
     # Back
     b0 = templates().button(button_x, (button_y + 360), 500, 100, (0, 155, 155), (0, 255, 255), language.tr().M0(0),
-                            80)  # TODO: tr ok
+                            80)
 
     mouse_cursor()
 

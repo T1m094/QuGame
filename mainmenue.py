@@ -1,3 +1,8 @@
+import collections
+
+import pygame.draw
+
+import screen
 import screens.screen_for_player_count_selection
 import screens.main_screen
 import screens.settings_screen
@@ -14,27 +19,22 @@ def main_menue():
     sound.sound_bg_play_1()
     def logo():
         y = 100
-        pygame.draw.rect(screen.screen, (0, 255, 0), ((screen.W/2) - 60,  30 + y, 100, 100), 10) #Grün
-        pygame.draw.rect(screen.screen, (255, 0, 0), ((screen.W/2),  90 + y, 100, 100), 10) #Rot
-        pygame.draw.rect(screen.screen, (0, 0, 255), ((screen.W/2), 90 + y , 40, 40), 0)  # Blau
-        pygame.draw.rect(screen.screen, (0, 255, 0), ((screen.W/2) + 80,  30 + y, 20, 20), 10) #Grün
-        pygame.draw.rect(screen.screen, (255, 0, 0), ((screen.W/2) - 60,  170 + y, 20, 20), 10) #Rot
+        pygame.draw.rect(screen.screen, (0, 255, 0), ((screen.W/2) - 60,  30 + y, 100, 100), 10) #green
+        pygame.draw.rect(screen.screen, (255, 0, 0), ((screen.W/2),  90 + y, 100, 100), 10) #red
+        pygame.draw.rect(screen.screen, (0, 0, 255), ((screen.W/2), 90 + y , 40, 40), 0)  # blue
+        pygame.draw.rect(screen.screen, (0, 255, 0), ((screen.W/2) + 80,  30 + y, 20, 20), 10) #green
+        pygame.draw.rect(screen.screen, (255, 0, 0), ((screen.W/2) - 60,  170 + y, 20, 20), 10) #red
 
+    simple_player_array = []
     #Simple Player Init
-    simple_player_1 = simple_player()
-    simple_player_2 = simple_player()
-    simple_player_3 = simple_player()
-    simple_player_4 = simple_player()
-    simple_player_5 = simple_player()
-    simple_player_6 = simple_player()
+    for x in range(0,8):
+        simple_player_array.append(simple_player())
 
     #Begin Screen
     screen_number = 1 #<-----TEST DEFAULT 1
 
-    go = True
     mouse_clickt = False
-
-    while go:
+    while True:
         mouse_presses = pygame.mouse.get_pressed()
 
         for event in pygame.event.get():
@@ -49,36 +49,19 @@ def main_menue():
                     mouse_clickt = True
 
         if (mouse_presses[0]):
-            if (simple_player_1.draw_player().collidepoint(mouse())):
-                simple_player_1.pos_x = mouse()[0] - 50
-                simple_player_1.pos_y = mouse()[1] - 50
-            if (simple_player_2.draw_player().collidepoint(mouse())):
-                simple_player_2.pos_x = mouse()[0] - 50
-                simple_player_2.pos_y = mouse()[1] - 50
-            if (simple_player_3.draw_player().collidepoint(mouse())):
-                simple_player_3.pos_x = mouse()[0] - 50
-                simple_player_3.pos_y = mouse()[1] - 50
-            if (simple_player_4.draw_player().collidepoint(mouse())):
-                simple_player_4.pos_x = mouse()[0] - 50
-                simple_player_4.pos_y = mouse()[1] - 50
-            if (simple_player_5.draw_player().collidepoint(mouse())):
-                simple_player_5.pos_x = mouse()[0] - 50
-                simple_player_5.pos_y = mouse()[1] - 50
-            if (simple_player_6.draw_player().collidepoint(mouse())):
-                simple_player_6.pos_x = mouse()[0] - 50
-                simple_player_6.pos_y = mouse()[1] - 50
+            for x in range(0, 8):
+                if (simple_player_array[x].draw_player().collidepoint(mouse())):
+                    simple_player_array[x].pos_x = mouse()[0] - 50
+                    simple_player_array[x].pos_y = mouse()[1] - 50
+
 
         screen.screen.fill((0, 0, 0))
 
         logo()
 
         #Start Simple Player
-        simple_player_1.start()
-        simple_player_2.start()
-        simple_player_3.start()
-        simple_player_4.start()
-        simple_player_5.start()
-        simple_player_6.start()
+        for x in range(0, 8):
+            simple_player_array[x].start()
 
         # Menü
         # 1. Spielen
@@ -89,7 +72,7 @@ def main_menue():
 
         # Main Screen
         if (screen_number == 1):
-            select = screens.main_screen.main_screen(mouse_clickt)
+            select = screens.main_screen.main_screen(mouse_clickt) #Open Main Chois
             if not select == None:
                 if (select == 1): #Spiel starten
                     screen_number = 2

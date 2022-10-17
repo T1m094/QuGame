@@ -9,13 +9,12 @@ if __name__ == '__main__':
     pygame.joystick.init()
 
     try:
-        #TEST GIT 2
         main_menue()
     except Exception as e:
         error_text = e
         timestamp = datetime.now().strftime('%H-%M_%d-%m-%Y')
 
-        error_datei_name = "DEBUGGER.txt"
+        error_datei_name = "DEBUGGER_QuGame.txt"
 
         with open(error_datei_name, "a") as txtfile:
             print(timestamp," String Variable: {}".format(error_text), file=txtfile)

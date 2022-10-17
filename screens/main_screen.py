@@ -5,15 +5,15 @@ def main_screen(mouse_presses):
     button_y = (H / 2 - 50)
 
     #Text Start
-    b1 = templates().button(button_x, (button_y - 120), 500, 100, (0, 155, 155), (0, 255, 255), language.tr().M1(1), 80)    #TODO: tr ok
-    #Text Anleitung
-    b2 = templates().button(button_x, button_y, 500, 100, (0, 155, 155), (0, 255, 255), language.tr().M1(2), 80)    #TODO: tr ok
-    #Text Einstellung
-    b3 = templates().button(button_x, (button_y + 120), 500, 100, (0, 155, 155), (0, 255, 255), language.tr().M1(3), 80)    #TODO: tr ok
+    b1 = templates().button(button_x, (button_y - 120), 500, 100, (0, 155, 155), (0, 255, 255), language.tr().M1(1), 80)
+    #Text Instruction
+    b2 = templates().button(button_x, button_y, 500, 100, (0, 155, 155), (0, 255, 255), language.tr().M1(2), 80)
+    #Text Settings
+    b3 = templates().button(button_x, (button_y + 120), 500, 100, (0, 155, 155), (0, 255, 255), language.tr().M1(3), 80)
     #Text INFO
-    b4 = templates().button(button_x, (button_y + 240), 250, 100, (0, 155, 155), (0, 255, 255), language.tr().M0(6), 70)    #TODO: tr ok
-    #Text ENDE
-    b0 = templates().button((button_x + 260), (button_y + 240), 240, 100, (0, 155, 155), (0, 255, 255), language.tr().M1(0), 80)    #TODO: tr ok
+    b4 = templates().button(button_x, (button_y + 240), 250, 100, (0, 155, 155), (0, 255, 255), language.tr().M0(6), 70)
+    #Text Exit
+    b0 = templates().button((button_x + 260), (button_y + 240), 240, 100, (0, 155, 155), (0, 255, 255), language.tr().M1(0), 80)
 
     mouse_cursor()
 

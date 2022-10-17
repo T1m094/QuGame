@@ -63,9 +63,9 @@ class player(objekt):
         self.name = name
         self.frame = 10
         self.points = 0
-        self.speed = 1
+        self.speed = 1.5
         self.speed_point = 0
-        self.max_speed = 4.5
+        self.max_speed = 5
         self.id = objekt.count_player
         self.item_s = item.item_point(self.speed_item_pos_x, self.speed_item_pos_y, 30, 30, 0, 0, 0, self.color, 0)
 
@@ -80,7 +80,7 @@ class player(objekt):
         #Player 1
         if self.id == 0:
             # Player
-            self.name = "Player 1 T"
+            self.name = "Player 1"
             self.pos_x = (screen.W/2) - 300
             self.pos_y = (screen.H / 2) - 50
             self.direction = 4
@@ -91,7 +91,7 @@ class player(objekt):
         #Player 2
         elif self.id == 1:
             # Player
-            self.name = "Player 2 T"
+            self.name = "Player 2"
             self.pos_x = (screen.W/2) + 200
             self.pos_y = (screen.H / 2) - 50
             self.direction = 6
@@ -102,7 +102,7 @@ class player(objekt):
         #Player 3
         elif self.id == 2:
             # Player
-            self.name = "Player 3 T"
+            self.name = "Player 3"
             self.pos_x = (screen.W/2) - 50
             self.pos_y = (screen.H/2) - 300
             self.direction = 8
@@ -113,7 +113,7 @@ class player(objekt):
         #Player 4
         elif self.id == 3:
             # Player
-            self.name = "Player 4 T"
+            self.name = "Player 4"
             self.pos_x = (screen.W/2) - 50
             self.pos_y = (screen.H/2) + 200
             self.direction = 2
@@ -123,7 +123,7 @@ class player(objekt):
             self.speed_item_pos_y = (screen.H/ 2) - 265
 
         self.points = 0
-        self.speed = 1
+        self.speed = 1.5
         self.speed_point = 0
 
     def joystick_add(self,joysick):
@@ -133,7 +133,7 @@ class player(objekt):
         return pygame.draw.rect(screen.screen, (25,25,25), [self.secure_quadrat_koordinaten[0], self.secure_quadrat_koordinaten[1], 300, 300], 1)
     def start(self):
         #draw secure
-       # pygame.draw.rect(screen.screen, (255,255,255), [self.secure_quadrat_koordinaten[0], self.secure_quadrat_koordinaten[1], 300, 300], 2)
+        pygame.draw.rect(screen.screen, (255,255,255), [self.secure_quadrat_koordinaten[0], self.secure_quadrat_koordinaten[1], 300, 300], 2)
 
         self.secure_quadrat_koordinaten = [(self.pos_x - 100),(self.pos_y - 100)]
 

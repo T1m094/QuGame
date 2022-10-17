@@ -109,7 +109,7 @@ def user_input(controller_count, player_array, timer):
                 elif event.key == pygame.K_d:
                     player[1].change_direction(6)
 
-    #For Tree Player
+    #For Three Player
     if (player_array_len == 3):
         for event in pygame.event.get():
             # For Controller

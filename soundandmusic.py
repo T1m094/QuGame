@@ -11,6 +11,9 @@ from data.sound.item_destroy_pf import item_destroy_pf
 
 pygame.mixer.init()
 class sound():
+    #TODO: Durchlesen!
+    # https://www.python-lernen.de/rueckgabewert-funktionen.htm
+
     #Backgroundmusic
     #bg_music_1 = bg_music_1  #"data/sound/musicfox_brainstorming.mp3" #https://www.musicfox.com/info/kostenlose-gemafreie-musik.php
     #bg_music_2 = bg_music_2 #"data/sound/Dario_sound.mp3"

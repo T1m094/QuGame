@@ -4,29 +4,24 @@ def settings_screen(mouse_presses):
     button_x = (W / 2 - 250)
     button_y = 310
 
-    #Text Sprache
-    templates().textfild(button_x, button_y, 500, 60, (0, 155, 155), language.tr().M3(2), 80)#TODO: tr ok
-
+    #Text Language
+    templates().textfild(button_x, button_y, 500, 60, (0, 155, 155), language.tr().M3(2), 80)
     button_y += 65
 
-    #Änderen der Sprache
-    language_b = templates().button_change(button_x, button_y, 500, 60, (0, 155, 155), (0, 255, 255), language.tr().M3(1),80)#TODO: tr ok
-
+    #cahnge Language
+    language_b = templates().button_change(button_x, button_y, 500, 60, (0, 155, 155), (0, 255, 255), language.tr().M3(1),80)
     button_y += 75
 
     #Text Sound
-    templates().textfild(button_x, button_y, 500, 60, (0, 155, 155), language.tr().M3(4), 80)  #TODO: tr ok
-
+    templates().textfild(button_x, button_y, 500, 60, (0, 155, 155), language.tr().M3(4), 80)
     button_y += 65
 
     # Sound on off
-    sound_bg_state = templates().button_change(button_x, button_y, 500, 60, (0, 155, 155), (0, 255, 255),language.tr().M3(3)[settings.settings.sound_background_state],80)   #TODO: tr ok
-
+    sound_bg_state = templates().button_change(button_x, button_y, 500, 60, (0, 155, 155), (0, 255, 255),language.tr().M3(3)[settings.settings.sound_background_state],80)
     button_y += 75
 
     #Textfild Volume
-    templates().textfild(button_x, button_y, 500, 60, (0, 155, 155), language.tr().M3(5), 70)#TODO: tr ok
-
+    templates().textfild(button_x, button_y, 500, 60, (0, 155, 155), language.tr().M3(5), 70)
     button_y += 75
 
     # Sound Volume
@@ -35,7 +30,7 @@ def settings_screen(mouse_presses):
     button_y += 150
 
     #Text Back
-    b0 = templates().button(button_x, button_y, 500, 100, (0, 155, 155), (0, 255, 255), language.tr().M0(0), 80)  #TODO: tr ok
+    b0 = templates().button(button_x, button_y, 500, 100, (0, 155, 155), (0, 255, 255), language.tr().M0(0), 80)
 
     mouse_cursor()
 

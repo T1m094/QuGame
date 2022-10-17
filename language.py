@@ -33,6 +33,12 @@ class tr():
         elif (content == 8):
             text = ["NOCHMAL","AGAIN"]
             text = text[language]
+        elif (content == 9):
+            text = ["SPIEL STARTEN","START GAME"]
+            text = text[language]
+        elif (content == 10):
+            text = ["Spielername:","Playername: "]
+            text = text[language]
 
         return text
 
@@ -41,7 +47,7 @@ class tr():
         language = settings.language
         self.content = content
         if (content == 0):
-            text = ["ENDE","EXIT"]
+            text = ["ENDEN","EXIT"]
             text = text[language]
         elif (content == 1):
             text = ["START","START"]

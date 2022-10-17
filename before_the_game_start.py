@@ -1,11 +1,7 @@
-import pygame
-
-import screen
 from screen import *
 from control_pictures import *
 from  user_input import *
 import input_box
-# For Joystick
 
 def befor_the_game_start(item_p, player_array):
     start_p_1 = False
@@ -15,17 +11,15 @@ def befor_the_game_start(item_p, player_array):
     font = pygame.font.SysFont(None, 50)
     start = False
     start_user = False
-    timer_sound_bg = True
 
+
+    #Size for Inputfild
     size_input = [200,60]
 
-
     game_start_button = screen.templates.button(None, (screen.W / 2) - 250, (screen.H - 150), 500, 100, (0, 155, 155),
-                                     (0, 255, 255), "Spiel Starten", 80)  # TODO: TEXT Spiel starten
+                                     (0, 255, 255), language.tr().M0(9), 80)
 
-
-
-    sound = soundandmusic.sound()
+    soundandmusic.sound()
     player_count = len(player_array)
 
     # create inputbox for Player 1
@@ -70,7 +64,6 @@ def befor_the_game_start(item_p, player_array):
                     start_p_4 = True
                     joysticks[3].rumble(1,1,150)
 
-                # VVV Kann eventuell verkürtzt werden
                 if pygame.joystick.get_count() == 2:
                     if ((start_p_1 == True) and (start_p_2 == True)):
                         start_user = True
@@ -92,38 +85,32 @@ def befor_the_game_start(item_p, player_array):
             for box in input_boxes:
                 box.handle_event(event)
 
-        #imput
+        #input
         for box in input_boxes:
             box.update()
 
         for box in input_boxes:
             box.draw(screen.screen)
 
-        #Text Klick for input
-
-
-
-
 
         #Start Button
         screen.templates.button(None, (screen.W / 2) - 250, (screen.H - 150), 500, 100, (0, 155, 155),
-                                (0, 255, 255), "Spiel Starten", 80)  # TODO: TEXT Spiel starten
+                                (0, 255, 255), language.tr().M0(9), 80)
 
         item_p.draw_player()
-
 
         for x in range(0, player_count):
             player_array[x].draw_player()
 
         # Count Controller
         controller_count = pygame.joystick.get_count()
-        # Text Leertaste to start
-        text_start = font.render(str(language.tr().M0(5)), True, (255, 255, 255))  # TODO: tr ok
+        # Text Space bar press break
+        text_start = font.render(str(language.tr().M0(5)), True, (255, 255, 255))
         screen.screen.blit(text_start, (((screen.W / 2) - 350), 40))
 
         # Instruction
         #Text Player-Name Player 1
-        text_start = font.render("Spielername:", True, (255, 255, 255))  # TODO: TEXT Player NAme
+        text_start = font.render(language.tr().M0(10), True, (255, 255, 255))
         screen.screen.blit(text_start, (10, (screen.H - 300)))
         # Keyboard player 1
         player_1_png_rec = player_1_png.get_rect()
@@ -134,7 +121,6 @@ def befor_the_game_start(item_p, player_array):
         if (controller_count >= 1):
             #Joystick Player
             player_array[0].joystick_add(joysticks[0])
-            #print(player_array[0].joystick)
             if (start_p_1 == False):
                 j_player_1_png_rec = joystick_png.get_rect()
                 j_player_1_png_rec.center = (430, (screen.H - 120))
@@ -144,7 +130,7 @@ def befor_the_game_start(item_p, player_array):
                 j_player_1_png_rec.center = (430, (screen.H - 120))
                 screen.screen.blit(joystick_1_png, j_player_1_png_rec)
         #Text Player-Name Player 2
-        text_start = font.render("Spielername:", True, (255, 255, 255))  # TODO: TEXT Player NAme
+        text_start = font.render(language.tr().M0(10), True, (255, 255, 255))
         screen.screen.blit(text_start, ((screen.W - 500), (screen.H - 300)))
         # Keyboard player 2
         player_2_png_rec = player_2_png.get_rect()
@@ -154,7 +140,6 @@ def befor_the_game_start(item_p, player_array):
         # Joystick player 2
         if (controller_count >= 2):
             player_array[1].joystick_add(joysticks[1])
-            # Not Start
             if (start_p_2 == False):
                 j_player_2_png_rec = joystick_png.get_rect()
                 j_player_2_png_rec.center = (screen.W - 450, (screen.H - 120))
@@ -166,7 +151,7 @@ def befor_the_game_start(item_p, player_array):
 
         if (player_count > 2):
             # Text Player-Name Player 3
-            text_start = font.render("Spielername:", True, (255, 255, 255))  # TODO: TEXT Player NAme
+            text_start = font.render(language.tr().M0(10), True, (255, 255, 255))
             screen.screen.blit(text_start, (10, 300))
             # Keyboard player 3
             player_3_png_rec = player_3_png.get_rect()
@@ -187,7 +172,7 @@ def befor_the_game_start(item_p, player_array):
 
         if (player_count > 3):
             # Text Player-Name Player 4
-            text_start = font.render("Spielername:", True, (255, 255, 255))  # TODO: TEXT Player NAme
+            text_start = font.render(language.tr().M0(10), True, (255, 255, 255))
             screen.screen.blit(text_start, ((screen.W - 500), 300))
 
             player_4_png_rec = player_4_png.get_rect()
@@ -209,7 +194,7 @@ def befor_the_game_start(item_p, player_array):
         mouse_cursor()
         pygame.display.flip()
 
-        # Wenn Spiel startet
+        # Start Game
         if start_user:
             if player_count == 2:
                 player_array[0].name = input_box1.text

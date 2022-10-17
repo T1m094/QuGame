@@ -1,10 +1,3 @@
-from pygame import font
-
-import screen
-import pygame
-from item import *
-import objekte
-import player
 import screen
 import language
 from control_pictures import *
@@ -25,10 +18,10 @@ player_4_png_rec.center = ((screen.W / 8) + 1500, (screen.H / 2) + 200)
 #Control
 def instruction_screen_1():
     # Control
-    screen.templates.textfild(None, 50, 50, 800, 80, (255, 0, 0), language.tr().M7(0), 80)  # M7 Steuerung '#TODO: tr
+    screen.templates.textfild(None, 50, 50, 800, 80, (255, 0, 0), language.tr().M7(0), 80)
 
     # Info TEXT
-    screen.templates.textfild(None, 50, 140, 1500, 80, (255, 0, 0), language.tr().M7(13), 40)  # TODO: tr ok
+    screen.templates.textfild(None, 50, 140, 1500, 80, (255, 0, 0), language.tr().M7(13), 40)
 
     # player_1
     screen.screen.blit(player_1_png, player_1_png_rec)
@@ -66,11 +59,11 @@ def instruction_screen_3():
     font = pygame.font.SysFont(None, 50)
     point_view = font.render(str(10), True, (255, 255, 255))
     # Speed
-    screen.templates.textfild(None, 50, 50, 800, 80, (255, 0, 0), language.tr().M7(2), 80)  # TODO: tr ok
+    screen.templates.textfild(None, 50, 50, 800, 80, (255, 0, 0), language.tr().M7(2), 80)
 
     # Info TEXT
-    screen.templates.textfild(None, 50, 140, 1500, 80, (255, 0, 0), language.tr().M7(7), 40)  # TODO: tr ok
-    screen.templates.textfild(None, 50, 180, 1500, 80, (255, 0, 0), language.tr().M7(8), 40)  # TODO: tr ok
+    screen.templates.textfild(None, 50, 140, 1500, 80, (255, 0, 0), language.tr().M7(7), 40)
+    screen.templates.textfild(None, 50, 180, 1500, 80, (255, 0, 0), language.tr().M7(8), 40)
 
     # player_1
     pygame.draw.rect(screen.screen, (255, 0, 0), [player_1_png_rec[0] + 120, player_1_png_rec[1] - 220, 30, 30], 0)
@@ -79,7 +72,7 @@ def instruction_screen_3():
     screen.screen.blit(point_view, (player_1_png_rec[0] + 95, player_1_png_rec[1] + 10))
     pygame.draw.rect(screen.screen, (80, 80, 80), [player_1_png_rec[0] + 85, player_1_png_rec[1] + 50, 73, 16], 2)
     pygame.draw.rect(screen.screen, (255, 0, 0),
-                     pygame.Rect(player_1_png_rec[0] + 85, player_1_png_rec[1] + 53, 10, 10))  # Geschwindigkeit
+                     pygame.Rect(player_1_png_rec[0] + 85, player_1_png_rec[1] + 53, 10, 10))
 
     # player_2
     pygame.draw.rect(screen.screen, (0, 255, 0), [player_2_png_rec[0] + 120, player_1_png_rec[1] - 220, 30, 30], 0)
@@ -168,33 +161,28 @@ def instruction():
 
         if (screen_number == 1):
             instruction_screen_1()
-            pass
-        elif (screen_number == 2):  # Screen 2
+        elif (screen_number == 2):
             instruction_screen_2()
-
         elif (screen_number == 3):
             instruction_screen_3()
-            pass
         elif (screen_number == 4):
             instruction_screen_4()
-            pass
         elif (screen_number == 5):
             instruction_screen_5()
-            pass
 
         # Button
         back_m = screen.templates.button(None, (screen.W / 2) - 250, (screen.H - 150), 500, 100, (0, 155, 155),
-                                         (0, 255, 255), language.tr().M0(2), 80)  # TODO: tr ok
+                                         (0, 255, 255), language.tr().M0(2), 80)
         if (screen_number > 1):
             back = screen.templates.button(None, (screen.W / 2) - 550, (screen.H - 150), 250, 100, (0, 155, 155),
-                                           (0, 255, 255), language.tr().M0(0), 80)  # TODO: tr
+                                           (0, 255, 255), language.tr().M0(0), 80)
             if mouse_clickt:
                 if back.collidepoint(screen.mouse()):
                     screen_number -= 1
 
         if (screen_number < 5):
             next = screen.templates.button(None, (screen.W / 2) + 300, (screen.H - 150), 250, 100, (0, 155, 155),
-                                           (0, 255, 255), language.tr().M0(1), 80)  # TODO: tr ok
+                                           (0, 255, 255), language.tr().M0(1), 80)
             if mouse_clickt:
                 if next.collidepoint(screen.mouse()):
                     screen_number += 1

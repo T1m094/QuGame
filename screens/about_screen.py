@@ -14,6 +14,7 @@ def about_screen(mouse_presses):
     # |6        \p3_________________/p4           |8
     # |                  3                        |
     # |p7_________________ 7______________________| p8
+
     h = -200
     p1 = [(W / 2) - 450, (H / 4) + h]
     p2 = [(W / 2) - 200, (H / 4) + h]
@@ -42,15 +43,13 @@ def about_screen(mouse_presses):
     # Line 8
     pygame.draw.line(screen, (0, 255, 255), p6, p8, 10)
 
-    text_surface = font.render(str(language.tr().M0(6)), True, (0, 255, 255)) #TODO: tr ok
-
+    text_surface = font.render(str(language.tr().M0(6)), True, (0, 255, 255))
     text_rec_res = text_surface.get_rect(center=(p9))
-
     screen.blit(text_surface, text_rec_res)
 
+    #Content Text
     text = ["QuGame","_____","Sound:","Backgroundmusic Menu", "https://www.musicfox.com/info/kostenlose-gemafreie-musik.php","Timeoutmusic:","https://mixkit.co/free-sound-effects","Itemssounds:","https://soundbible.com/","Yellow Item:","Andreas Bruch","Backgroundmusic Game created by:","Dario Boschetto"," ","developt by:", "Timo Heinz"]
 
-    x = 0
     pos_y = (H / 4) + 50 - 150
     pos_x = ((W / 2) - 435)
 
@@ -60,7 +59,7 @@ def about_screen(mouse_presses):
         pos_y += 50
 
     b0 = templates().button(button_x, (button_y + 450), 500, 100, (0, 155, 155), (0, 255, 255), language.tr().M0(0),
-                     80) #TODO: tr ok
+                     80)
 
     mouse_cursor()
 
