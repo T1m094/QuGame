@@ -7,11 +7,9 @@ import screen
 
 class player(objekt):
     def __init__(self, name):
-
-
-        #Size Quadrat
-        self.size_x = 100 #Default 100 TODO
-        self.size_y = 100 #Default 100 TODO
+        #Size Square
+        self.size_x = 100 #Default 100
+        self.size_y = 100 #Default 100
 
         #Position and Speed at start
         #Player 1
@@ -56,9 +54,7 @@ class player(objekt):
             self.speed_item_pos_y = (screen.H/ 2) - 265
 
         #For all player
-
         self.secure_quadrat_koordinaten = [(self.pos_x - 100),(self.pos_y - 100)]
-
         self.joystick = None
         self.name = name
         self.frame = 10
@@ -134,12 +130,12 @@ class player(objekt):
     def start(self):
         #draw secure
         pygame.draw.rect(screen.screen, (255,255,255), [self.secure_quadrat_koordinaten[0], self.secure_quadrat_koordinaten[1], 300, 300], 2)
-
         self.secure_quadrat_koordinaten = [(self.pos_x - 100),(self.pos_y - 100)]
 
         self.draw_player()
         self.edge_change()
         self.move()
+
         #Speeditem
         if (self.speed < self.max_speed):
             self.item_s.start()
@@ -237,8 +233,8 @@ class player(objekt):
             del cp
             self.pos_y = 0
 
-    # Behavior
     #?
+    # Behavior
     def acquire_item_by_bumping(self, other_pos):
         if (((self.pos_x + self.size_x) > other_pos[0]) and (self.pos_x < (other_pos[0] + other_pos[2])) and (
                 (self.pos_y + self.size_y) > other_pos[1]) and (self.pos_y < (other_pos[1]) + other_pos[3])):
@@ -319,9 +315,3 @@ class simple_player_winner(objekt):
         self.size_y = self.size_x = self.size_x + 0.2
         if self.size_x > 100:
             self.size_y = self.size_x  = 100
-
-
-
-
-
-

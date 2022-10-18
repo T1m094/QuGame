@@ -5,9 +5,8 @@ import soundandmusic
 from control_pictures import icon
 
 pygame.init()
-screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN, 1) #TODO: DISPLAY  V-Sync!!!
-#screen = pygame.display.set_mode((1200,800),pygame.RESIZABLE, 1) #TODO: DISPLAY  V-Sync!!! TEST
-pygame.display.set_caption("Qu")
+screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN, 1)
+pygame.display.set_caption("QuGame")
 pygame.display.set_icon(icon)
 W, H = screen.get_size()
 FPS = 60
@@ -42,9 +41,7 @@ class templates():
     #Templates
     def frame(self,bx, by, laenge, hoehe,farbe_bg, farbe_fr, text, text_size):
         font = pygame.font.SysFont('''Arial Baltic''', text_size)
-
         pygame.draw.rect(screen, farbe_fr, (bx, by, laenge, hoehe), 5)
-
         text_surface = font.render(text, True, farbe_fr)
         screen.blit(text_surface, ((bx + 50), (by + 20)))
 
@@ -73,15 +70,6 @@ class templates():
         return button
 
     def sound_volume(self,bx, by, laenge, hoehe, farbe_normal, farbe_aktiv, vol):
-        '''
-        #2
-        bx_2 = bx + 125
-        #3
-        bx_3 = bx + 250
-        #4
-        bx_4 = bx + 375
-        '''
-
         #2
         bx_2 = bx + 133.33
         #3
@@ -129,7 +117,6 @@ class templates():
                 pygame.draw.rect(screen, farbe_aktiv, (bx_3, by, 100, hoehe))
                 pygame.draw.rect(screen, farbe_aktiv, (bx_4, by, 100, hoehe))
 
-
         #1
         pygame.draw.rect(screen, farbe_normal, (bx, by, 100, hoehe), 5)
         pygame.draw.rect(screen, farbe_normal, (bx_2, by, 100, hoehe), 5)
@@ -143,7 +130,7 @@ class templates():
         b_l = False
         b_r = False
 
-        #left choice
+        #leftside choice
         if ((mouse()[0] > bx) and (mouse()[0] < bx + 60) and (mouse()[1] > by) and (mouse()[1] < by + hoehe)):
             pygame.draw.rect(screen, farbe_aktiv, (bx, by, 60, hoehe))
             pygame.draw.rect(screen, farbe_normal, (bx, by, 60, hoehe), 5)
@@ -153,7 +140,7 @@ class templates():
             pygame.draw.rect(screen, farbe_normal, (bx, by, 60, hoehe))
             pygame.draw.rect(screen, farbe_aktiv, (bx, by, 60, hoehe), 5)
 
-        #right choice
+        #Rightside  choice
         if ((mouse()[0] > (bx +  laenge - 60)) and (mouse()[0] < bx + laenge) and (mouse()[1] > by) and (mouse()[1] < by + hoehe)):
             pygame.draw.rect(screen, farbe_aktiv, (bx +  laenge - 60, by, 60, hoehe))
             pygame.draw.rect(screen, farbe_normal, (bx +  laenge - 60, by, 60, hoehe), 5)
@@ -200,26 +187,21 @@ class templates():
 
             logo()
 
-
             button_x = (W / 2 - 250)
             button_y = (H / 2 - 50)
 
-            # Textfeld Pause
-            self.textfild(button_x, 250, 500, 60, (0, 155, 155), language.tr.M0(self, 4), 80) #TODO: tr ok
+            # Textfeld break
+            self.textfild(button_x, 250, 500, 60, (0, 155, 155), language.tr.M0(self, 4), 80)
 
             # Textfeld Vol
-            self.textfild(button_x, 340, 500, 65, (0, 155, 155), language.tr.M3(self, 5), 80)  # Textfeld Lautstärke #TODO: tr ok
-
+            self.textfild(button_x, 340, 500, 65, (0, 155, 155), language.tr.M3(self, 5), 80)
 
             sound_bg_vol = self.sound_volume(button_x, 420, 400, 100, (0, 155, 155), (0, 255, 255),
                                              settings.settings.sound_background_vol)  # Sound
-
-
             b0 = self.button(button_x, (button_y + 180), 500, 100, (0, 155, 155), (0, 255, 255),
-                             language.tr.M0(self, 0), 80) #TODO: tr ok
-
+                             language.tr.M0(self, 0), 80)
             b1 = self.button(button_x, (button_y + 310), 500, 100, (0, 155, 155), (0, 255, 255),
-                             language.tr.M0(self, 2), 80) #TODO: tr ok
+                             language.tr.M0(self, 2), 80)
 
             mouse_cursor()
 

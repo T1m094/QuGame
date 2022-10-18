@@ -4,10 +4,9 @@ from player import *
 
 def winner_display(player_array):
     sound.sound_bg_play_1(self=sound)
-    # Schrift
+    #Font|Schrift
     font = pygame.font.SysFont('''Arial Baltic''', 80)
     name_font = pygame.font.SysFont('''Arial Baltic''', 50)
-
 
     player_count = len(player_array)
     winner_array = []
@@ -56,7 +55,6 @@ def winner_display(player_array):
         point_view = str(winner_array[3][1])
         text_point_4 = name_font.render(point_view, True, winner_array[3][0])
 
-
     #R
     simple_player_2 = simple_player_winner(winner_array[0][0], ((screen.W/2) + 500),((screen.H) - 200))
     simple_player_21 = simple_player_winner(winner_array[0][0], ((screen.W/2) + 500),((screen.H) - 400))
@@ -70,9 +68,6 @@ def winner_display(player_array):
     simple_player_12 = simple_player_winner(winner_array[0][0], ((screen.W/2) - 600),((screen.H) - 600))
     simple_player_13 = simple_player_winner(winner_array[0][0], ((screen.W/2) - 600),((screen.H) - 800))
     simple_player_14 = simple_player_winner(winner_array[0][0], ((screen.W/2) - 600),((screen.H) - 1000))
-
-
-
 
     while True:
         for event in pygame.event.get():
@@ -103,7 +98,7 @@ def winner_display(player_array):
         # Line 8
         pygame.draw.line(screen.screen, (0, 255, 255), p6, p8, 10)
 
-        text_surface = font.render(str(language.tr().M0(7)), True, (0, 255, 255)) #TODO: tr ok
+        text_surface = font.render(str(language.tr().M0(7)), True, (0, 255, 255))
         text_rec = text_surface.get_rect(center=(p9))
 
         screen.screen.blit(text_surface, text_rec)
@@ -114,11 +109,10 @@ def winner_display(player_array):
         name_and_point_pos_y = 260
 
         #Info Text Name Punkte
-        text = name_font.render("Spielername", True, (0,255,255)) #TODO: TR
+        text = name_font.render(language.tr().M0(10), True, (0,255,255))
         screen.screen.blit(text, ((screen.W / 2) - 300, ((screen.H/4) + 90 + h)))
-        text = name_font.render("Punkte", True, (0,255,255)) #TODO: TR
+        text = name_font.render(language.tr().M7(1), True, (0,255,255))
         screen.screen.blit(text, ((screen.W / 2) + 200, ((screen.H/4) + 90 + h)))
-
 
         pygame.draw.rect(screen.screen, (winner_array[0][0]), ((screen.W / 2) - 400, 230 + pos_y, 800, 100), 5) #Frame
         screen.screen.blit(text_point_1, ((screen.W / 2) + 200, name_and_point_pos_y))                         #Points
@@ -178,9 +172,6 @@ def winner_display(player_array):
         simple_player_22.start()
         simple_player_23.start()
         simple_player_24.start()
-
-
-
 
         pygame.display.update(screen.mouse_cursor())
         pygame.display.flip()

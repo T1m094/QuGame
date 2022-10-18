@@ -9,7 +9,6 @@ from MyTimer import *
 
 def multiplayer_game_start(player_count):
     sound = soundandmusic.sound()
-
     #Time
     clock = pygame.time.Clock()
     #Schrift
@@ -28,7 +27,6 @@ def multiplayer_game_start(player_count):
         if (count > 4):
             print("Max 4 Player")
             return
-
         player_array = []
         for x in range(count):
             player_i = x + 1
@@ -52,21 +50,18 @@ def multiplayer_game_start(player_count):
         #Item
         item_p.start()
         fiep.start()
-
         pygame.display.flip()
-
-        #Variablen
-        close = False
 
         timer_sound_timeout = True
         timer_1 = MyTimer(300) #<- default 300 = 5 min
 
         # Start menü
         controller_count = before_the_game_start.befor_the_game_start(item_p, player_array)
-
         sound.sound_bg_play_2()
         timer_1.start()
 
+        #Variablen
+        close = False
         #______________Start Game_________________
         while not close:
             seconds_current = timer_1.get_current_sec()
@@ -76,12 +71,6 @@ def multiplayer_game_start(player_count):
                     count_t = font.render(str(convert(seconds_current)), True, (155, 25, 0))
                 else:
                     count_t = font.render(str(convert(seconds_current)), True, (0, 0, 0))
-
-                '''
-                if timer_sound_timeout:
-                    sound.time_out_play()
-                    timer_sound_timeout = False
-                '''
             else:
                 count_t = font.render(str(convert(seconds_current)), True, (255, 255, 255))
 
@@ -90,7 +79,6 @@ def multiplayer_game_start(player_count):
                 count_t = font.render("TIME OUT", True, (255, 0, 0))
                 screen.screen.blit(count_t, (((screen.W / 2) - 100), (screen.H/2)))
                 pygame.display.flip()
-
                 while True:
                     if not player_array[0].joystick == None:
                         player_array[0].joystick.rumble(0.5, 0.5, 170)
@@ -106,8 +94,6 @@ def multiplayer_game_start(player_count):
                     pygame.time.delay(2000)
                     break
 
-
-
                 close = True
 
             screen.screen.blit(count_t, (((screen.W / 2) - 30), (screen.H - 50)))
@@ -121,7 +107,6 @@ def multiplayer_game_start(player_count):
                 close = True
                 timer_1.get_elapsed()
             timer_1.start()
-
 
             #Logic
             #Item start
@@ -176,7 +161,6 @@ def multiplayer_game_start(player_count):
             del timer_1
 
             #Blue Item center
-
             item_p.pos_x = ((screen.W / 2) - 30)
             item_p.pos_y = ((screen.H / 2) - 30)
 
@@ -184,8 +168,3 @@ def multiplayer_game_start(player_count):
         else:
             objekt.count_player = 0
             break
-
-def countdown(clock):
-    screen.screen.fill((0, 0, 0))
-    clock.tick(screen.FPS)
-    pygame.display.flip()

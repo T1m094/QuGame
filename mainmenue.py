@@ -1,7 +1,5 @@
 import collections
-
 import pygame.draw
-
 import screen
 import screens.screen_for_player_count_selection
 import screens.main_screen
@@ -36,7 +34,6 @@ def main_menue():
     mouse_clickt = False
     while True:
         mouse_presses = pygame.mouse.get_pressed()
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit()
@@ -54,9 +51,7 @@ def main_menue():
                     simple_player_array[x].pos_x = mouse()[0] - 50
                     simple_player_array[x].pos_y = mouse()[1] - 50
 
-
         screen.screen.fill((0, 0, 0))
-
         logo()
 
         #Start Simple Player

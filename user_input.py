@@ -5,12 +5,12 @@ def user_input(controller_count, player_array, timer):
     player_array_len = len(player_array)
     player = player_array
 
-    spielpause = False
+    brake_game = False
 
     #Wenn Joystick anzahl sich ändert wird pausiert
     if not (controller_count == pygame.joystick.get_count()):
         timer.pause()
-        spielpause = True
+        brake_game = True
         pygame.mixer.music.pause()
         back_to_main = screen.templates().breake_screen()
         if (back_to_main == 1):
@@ -19,18 +19,17 @@ def user_input(controller_count, player_array, timer):
         timer.start()
         pygame.mixer.music.unpause()
 
-#Kann noch verbessert werden
     # For Two Player
     if (player_array_len == 2):
         for event in pygame.event.get():
             # For Controller
             if event.type == pygame.JOYBUTTONUP:
                 if event.button == 7:
-                    if spielpause == True:
-                        spielpause = False
+                    if brake_game == True:
+                        brake_game = False
                     else:
                         timer.pause()
-                        spielpause = True
+                        brake_game = True
                         pygame.mixer.music.pause()
                         back_to_main = screen.templates().breake_screen()
                         if (back_to_main == 1):
@@ -75,12 +74,12 @@ def user_input(controller_count, player_array, timer):
             elif event.type == pygame.KEYDOWN:
 
                 if ((event.key == pygame.K_ESCAPE) or (event.key == pygame.K_SPACE)) :
-                    if spielpause == True:
-                        spielpause = False
+                    if brake_game == True:
+                        brake_game = False
 
                     else:
                         timer.pause()
-                        spielpause = True
+                        brake_game = True
                         pygame.mixer.music.pause()
                         back_to_main = screen.templates().breake_screen()
                         if (back_to_main == 1):
@@ -115,11 +114,11 @@ def user_input(controller_count, player_array, timer):
             # For Controller
             if event.type == pygame.JOYBUTTONUP:
                 if event.button == 7:
-                    if spielpause == True:
-                        spielpause = False
+                    if brake_game == True:
+                        brake_game = False
                     else:
                         timer.pause()
-                        spielpause = True
+                        brake_game = True
                         pygame.mixer.music.pause()
                         back_to_main = screen.templates().breake_screen()
                         if (back_to_main == 1):
@@ -160,12 +159,12 @@ def user_input(controller_count, player_array, timer):
             elif event.type == pygame.KEYDOWN:
 
                 if ((event.key == pygame.K_ESCAPE) or (event.key == pygame.K_SPACE)) :
-                    if spielpause == True:
-                        spielpause = False
+                    if brake_game == True:
+                        brake_game = False
 
                     else:
                         timer.pause()
-                        spielpause = True
+                        brake_game = True
                         pygame.mixer.music.pause()
                         back_to_main = screen.templates().breake_screen()
                         if (back_to_main == 1):
@@ -208,11 +207,11 @@ def user_input(controller_count, player_array, timer):
             # For Controller
             if event.type == pygame.JOYBUTTONUP:
                 if event.button == 7:
-                    if spielpause == True:
-                        spielpause = False
+                    if brake_game == True:
+                        brake_game = False
                     else:
                         timer.pause()
-                        spielpause = True
+                        brake_game = True
                         pygame.mixer.music.pause()
                         back_to_main = screen.templates().breake_screen()
                         if (back_to_main == 1):
@@ -254,11 +253,11 @@ def user_input(controller_count, player_array, timer):
             elif event.type == pygame.KEYDOWN:
 
                 if ((event.key == pygame.K_ESCAPE) or (event.key == pygame.K_SPACE)) :
-                    if spielpause == True:
-                        spielpause = False
+                    if brake_game == True:
+                        brake_game = False
                     else:
                         timer.pause()
-                        spielpause = True
+                        brake_game = True
                         pygame.mixer.music.pause()
                         back_to_main = screen.templates().breake_screen()
                         if (back_to_main == 1):

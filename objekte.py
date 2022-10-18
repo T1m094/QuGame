@@ -7,7 +7,6 @@ class objekt:
     player_array = []
     count_item = 0
     x_pos = 0
-    zeichnug = []
 
     # [pos_x[0], pos_y[1], size_x[2], size_y[3], direction[4], speed[5], points[6], color[7],Frame[8]
     def __init__(self, pos_x, pos_y, size_x, size_y,direction,speed, points, color,frame):
