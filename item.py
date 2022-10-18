@@ -82,29 +82,20 @@ class item_point(item):
 
 class item_destroy(item):
     def __init__(self):
-        '''
-        self.pos_x = (screen.W/2) + 500
-        self.pos_y = 40
-        self.size_x = 920
-        self.size_y = 400
-        self.direction = 2
-        self.speed = 2
-        '''
-        self.pos_x = screen.W/2
-        self.pos_y = screen.H  - 100
+        self.pos_x = 0
+        self.pos_y = -100
         self.size_x = 200
         self.size_y = 200
         self.direction = 4
         self.speed = 1
 
-        self.color = (150,150,150)#(16, 185, 59)
+        self.color = (155,155,155)#(16, 185, 59)
         self.frame = 0
 
         # Red blinking Quadrat
         self.size = 25
         self.color_blinking_off = (60,20,20)
-
-        self.color_blinking_on = (255,0,0)
+        self.color_blinking_on = (225,20,20)
         self.color_blinking = self.color_blinking_off
 
         #lo
@@ -116,49 +107,50 @@ class item_destroy(item):
         #ru
         self.pos_ru = [(self.pos_x + self.size_x - 25),(self.pos_y + self.size_y - 25)]
 
-        self.lo = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lo[0],self.pos_lo[1],  self.size,self.size], self.frame)
-        self.ro = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ro[0],self.pos_ro[1],  self.size,self.size], self.frame)
-        self.lu = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lu[0],self.pos_lu[1],  self.size,self.size], self.frame)
-        self.ru = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ru[0],self.pos_ru[1],  self.size,self.size], self.frame)
-
+        self.lo = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lo[0],self.pos_lo[1],  self.size,self.size], self.frame,4)
+        self.ro = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ro[0],self.pos_ro[1],  self.size,self.size], self.frame,4)
+        self.lu = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lu[0],self.pos_lu[1],  self.size,self.size], self.frame,4)
+        self.ru = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ru[0],self.pos_ru[1],  self.size,self.size], self.frame,4)
 
     def draw_player(self):
+        #Draw Player
+        draw = pygame.draw.rect(screen.screen, self.color, [self.pos_x, self.pos_y, self.size_x,self.size_y], self.frame,4)
 
-        draw = pygame.draw.rect(screen.screen, self.color, [self.pos_x, self.pos_y, self.size_x,self.size_y], self.frame)
-
-        rot = self.color_blinking[0]
-        blau = self.color_blinking[1]
-        gruen = self.color_blinking[2]
+        #Draw Blinking Lights
+        red = self.color_blinking[0]
+        blue = self.color_blinking[1]
+        green = self.color_blinking[2]
         pos_x = self.pos_x
         pos_y = self.pos_y
         size_x = self.size_x
         size_y = self.size_y
 
         if self.color_blinking == self.color_blinking_on:
-            for x in range(0, 60):
-
+            while True:
                 pos_x -= 0.5
                 pos_y -= 0.5
                 size_x += 1
                 size_y += 1
 
-                rot -= 8
-                blau -= 8
-                gruen -= 8
+                red -= 4.5
+                blue -= 4.5
+                green -= 4.5
 
-                if rot < 0:
-                    rot = 0
-                if blau < 0:
-                    blau = 0
-                if gruen < 0:
-                    gruen = 0
+                if red < 0:
+                    red = 0
+                if blue < 0:
+                    blue = 0
+                if green < 0:
+                    green = 0
+                if ( red == 0 and blue == 0 and green == 0):
+                    break
 
-                pygame.draw.rect(screen.screen, (rot,gruen,blau), [pos_x, pos_y, size_x,size_y], 2)
+                pygame.draw.rect(screen.screen, (red,green,blue), [pos_x, pos_y, size_x,size_y], 2,4)
 
         self.update_red_quadrats()
         self.draw_red_quadrats()
-
         return draw
+
     def update_red_quadrats(self):
         self.pos_lo = [self.pos_x, self.pos_y]
         #ro
@@ -168,23 +160,17 @@ class item_destroy(item):
         #ru
         self.pos_ru = [(self.pos_x + self.size_x - 25),(self.pos_y + self.size_y - 25)]
 
-
-        self.lo = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lo[0],self.pos_lo[1],  self.size,self.size], self.frame)
-        self.ro = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ro[0],self.pos_ro[1],  self.size,self.size], self.frame)
-        self.lu = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lu[0],self.pos_lu[1],  self.size,self.size], self.frame)
-        self.ru = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ru[0],self.pos_ru[1],  self.size,self.size], self.frame)
-
+        self.lo = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lo[0],self.pos_lo[1],  self.size,self.size], self.frame,4)
+        self.ro = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ro[0],self.pos_ro[1],  self.size,self.size], self.frame,4)
+        self.lu = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lu[0],self.pos_lu[1],  self.size,self.size], self.frame,4)
+        self.ru = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ru[0],self.pos_ru[1],  self.size,self.size], self.frame,4)
 
     def draw_red_quadrats(self):
-        self.lo = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lo[0],self.pos_lo[1],  self.size,self.size], self.frame)
-        pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ro[0],self.pos_ro[1], self.size,self.size], self.frame)
-        pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lu[0],self.pos_lu[1], self.size,self.size], self.frame)
-        pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ru[0],self.pos_ru[1], self.size,self.size], self.frame)
+        self.lo = pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lo[0],self.pos_lo[1],  self.size,self.size], self.frame,4)
+        pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ro[0],self.pos_ro[1], self.size,self.size], self.frame,4)
+        pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_lu[0],self.pos_lu[1], self.size,self.size], self.frame,4)
+        pygame.draw.rect(screen.screen, self.color_blinking, [self.pos_ru[0],self.pos_ru[1], self.size,self.size], self.frame,4)
         self.blinking_quadrat()
-
-
-
-
 
     def blinking_quadrat(self):
         if time.time() % 1 > 0.5:  # Time Blinking
@@ -209,14 +195,9 @@ class item_destroy(item):
             if not ( player.points == 0):
                 player.points -= 1
 
-
-
     def acquire(self, player_list):
-
         #Plyerlist and compare with point
         sound().destroy_item()
-
-
         self.pos_x = randint(0, (screen.W - 50))
         self.pos_y = randint(10, (screen.H - 50))
         self.size_x = randint(100, 500)
@@ -228,12 +209,8 @@ class item_destroy(item):
         for x in range(len(player_list)):
             player_list_draw.append([player_list[x].secure_quadrat_koordinaten[0],player_list[x].secure_quadrat_koordinaten[1], 300,300])
 
-
         #Pos check if not in player
-
-
         while not ( item_destroy.collidelist(player_list_draw) == (-1)):
-
             self.pos_x = randint(0, (screen.W - 50))
             self.pos_y = randint(10, (screen.H - 50))
             self.size_x = randint(100, 500)
@@ -250,7 +227,6 @@ class item_destroy(item):
             if (player_list[x].draw_player().colliderect(self.draw_player())):
                 self.acquire(player_list)
                 self.punish(player_list[x])
-
 
     def random_direc(self):
         ran_number = randint(0, 9)
@@ -281,6 +257,7 @@ class item_destroy(item):
         # Rechts und oben
         # Links  und oben
         # Links und unten
+
        # Links raus
         if ((x2) >= screen.W):
             left = True
@@ -344,7 +321,7 @@ class item_destroy(item):
             cp.pos_x = (screen.W + self.pos_x)
             cp.draw_player()
             for x in range(player_list_len):
-                if (player_list[x].draw_player().colliderect(cp_d.draw_player())):
+                if (player_list[x].draw_player().colliderect(cp.draw_player())):
                     self.acquire(player_list)
                     self.punish(player_list[x])
 
@@ -355,29 +332,29 @@ class item_destroy(item):
             cp.pos_x = (((x2) - screen.W) - self.size_x)
             cp.draw_player()
             for x in range(player_list_len):
-                if (player_list[x].draw_player().colliderect(cp_d.draw_player())):
+                if (player_list[x].draw_player().colliderect(cp.draw_player())):
                     self.acquire(player_list)
                     self.punish(player_list[x])
 
-            # Links  und oben
+        # Links und oben
         if ((left == True) and (top == True)):
             cp = copy.copy(self)
             cp.pos_x = (((x2) - screen.W) - self.size_x)
             cp.pos_y = (screen.H + self.pos_y)
             cp.draw_player()
             for x in range(player_list_len):
-                if (player_list[x].draw_player().colliderect(cp_d.draw_player())):
+                if (player_list[x].draw_player().colliderect(cp.draw_player())):
                     self.acquire(player_list)
                     self.punish(player_list[x])
         
-            # Rechts  und oben
+        # Rechts  und oben
         if ((right== True) and (top == True)):
             cp = copy.copy(self)
             cp.pos_x = (screen.W + self.pos_x)
             cp.pos_y = (screen.H + self.pos_y)
             cp.draw_player()
             for x in range(player_list_len):
-                if (player_list[x].draw_player().colliderect(cp_d.draw_player())):
+                if (player_list[x].draw_player().colliderect(cp.draw_player())):
                     self.acquire(player_list)
                     self.punish(player_list[x])
 
@@ -416,7 +393,6 @@ class item_fiep(item):
 
     def acquire_by_include(self, player_list, witch_item):
         for x in range(len(player_list)):
-
             if (player_list[x].draw_player().contains(self.draw_player())):
                 sound().yellow_item()
                 for x_2 in range(len(player_list)):
@@ -427,7 +403,6 @@ class item_fiep(item):
                     #haptisches feedback for yellow
                     if not player_list[x_2].joystick == None:
                         player_list[x_2].joystick.rumble(1,1,500)
-
                     if not player_list[x].joystick == None:
                         player_list[x].joystick.rumble(0.5,0.5,200)
                 self.acquire()
