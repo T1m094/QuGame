@@ -5,8 +5,6 @@ It is a multiplayer game. This game requires reaction and concentration.
 
 
 #### Current Version 
-https://mega.nz/file/kXlhGZzL
-wHdgkeE-OvzoNJ8K2_WjVRV7O5ouSr2q2uqiGNgP3A4
 
 #
 ![screenshot_2](https://user-images.githubusercontent.com/87002681/188398435-d82333be-6ea4-4e60-affd-18fb7ab3baab.jpg)
