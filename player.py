@@ -55,6 +55,7 @@ class player(objekt):
 
         #For all player
         self.secure_quadrat_koordinaten = [(self.pos_x - 100),(self.pos_y - 100)]
+        self.speed_item_quadrat_koordinaten = [(self.secure_quadrat_koordinaten[0] - 100), (self.secure_quadrat_koordinaten[1] - 100)]
         self.joystick = None
         self.name = name
         self.frame = 10
@@ -129,8 +130,12 @@ class player(objekt):
         return pygame.draw.rect(screen.screen, (25,25,25), [self.secure_quadrat_koordinaten[0], self.secure_quadrat_koordinaten[1], 300, 300], 1)
     def start(self):
         #draw secure
-        pygame.draw.rect(screen.screen, (255,255,255), [self.secure_quadrat_koordinaten[0], self.secure_quadrat_koordinaten[1], 300, 300], 2)
+        pygame.draw.rect(screen.screen, self.color, [self.secure_quadrat_koordinaten[0], self.secure_quadrat_koordinaten[1], 300, 300], 2)
+        #draw Speed item
+        pygame.draw.rect(screen.screen, self.color, [self.speed_item_quadrat_koordinaten[0],self.speed_item_quadrat_koordinaten[1], 500, 500], 2)
+
         self.secure_quadrat_koordinaten = [(self.pos_x - 100),(self.pos_y - 100)]
+        self.speed_item_quadrat_koordinaten = [(self.secure_quadrat_koordinaten[0] - 100), (self.secure_quadrat_koordinaten[1] - 100)]
 
         self.draw_player()
         self.edge_change()
@@ -140,7 +145,7 @@ class player(objekt):
         if (self.speed < self.max_speed):
             self.item_s.start()
             self.item_s.start()
-            self.item_s.acquire_by_include([self], 2)
+            self.item_s.acquire_by_include([self], 2, self.speed_item_quadrat_koordinaten)
         self.print_speedpoints()
 
         return self
@@ -190,7 +195,7 @@ class player(objekt):
             cp = copy.copy(self)
             cp.pos_x = (((x2) - screen.W) - self.size_x)
             cp.draw_player()
-            if ((self.speed < self.max_speed) and (self.item_s.acquire_by_include([cp], 2))):
+            if ((self.speed < self.max_speed) and (self.item_s.acquire_by_include([cp], 2, self.speed_item_quadrat_koordinaten))):
                 self.speed_point = cp.speed_point
                 self.speed = cp.speed
         if (self.pos_x  >= screen.W):
@@ -202,7 +207,7 @@ class player(objekt):
             cp = copy.copy(self)
             cp.pos_x = (screen.W + self.pos_x)
             cp.draw_player()
-            if ((self.speed < self.max_speed) and (self.item_s.acquire_by_include([cp], 2))):
+            if ((self.speed < self.max_speed) and (self.item_s.acquire_by_include([cp], 2, self.speed_item_quadrat_koordinaten))):
                 self.speed_point = cp.speed_point
                 self.speed = cp.speed
         if ((x2) <= 0):
@@ -214,7 +219,7 @@ class player(objekt):
             cp = copy.copy(self)
             cp.pos_y = (screen.H + self.pos_y)
             cp.draw_player()
-            if ((self.speed < self.max_speed) and (self.item_s.acquire_by_include([cp], 2))):
+            if ((self.speed < self.max_speed) and (self.item_s.acquire_by_include([cp], 2), self.speed_item_quadrat_koordinaten)):
                 self.speed_point = cp.speed_point
                 self.speed = cp.speed
         if ((y2) <= 0):
@@ -226,7 +231,7 @@ class player(objekt):
             cp = copy.copy(self)
             cp.pos_y = (((y2) - screen.H) - self.size_y)
             cp.draw_player()
-            if ((self.speed < self.max_speed) and (self.item_s.acquire_by_include([cp], 2))):
+            if ((self.speed < self.max_speed) and (self.item_s.acquire_by_include([cp], 2, self.speed_item_quadrat_koordinaten))):
                 self.speed_point = cp.speed_point
                 self.speed = cp.speed
         if (self.pos_y >= screen.H):

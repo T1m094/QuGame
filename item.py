@@ -1,3 +1,4 @@
+import random
 import time
 from random import randint
 from soundandmusic import *
@@ -37,7 +38,7 @@ class item_point(item):
         self.color = color
         self.frame = frame
 
-    def acquire_by_include(self, player_list, witch_item): #1. Point 2.Speed
+    def acquire_by_include(self, player_list, witch_item,speed_item_quadrat_koordinaten = None): #1. Point 2.Speed
         count = 0
         player_list_len = len(player_list)
         #Check Item include
@@ -56,8 +57,75 @@ class item_point(item):
 
                 #Speed
                 elif (witch_item == 2):
+                    #   _____________
+                    #  |  1   |  2  |
+                    #  |____________|
+                    #  |  3   |  4  |
+                    #  |____________|
+                    #
+
+
+
+                    print("DEBUGG 1")
+                    speed_item_q_x = speed_item_quadrat_koordinaten[0]
+
+                    print("DEBUGG 2")
+                    speed_item_q_y = speed_item_quadrat_koordinaten[1]
+
+                    self.pos_x = random.uniform(speed_item_q_x, speed_item_q_x + 500)
+                    self.pos_y = random.uniform(speed_item_q_y, speed_item_q_y + 500)
+
+                    #L
+                    if speed_item_q_x < 0:
+                        print("DEBUGG L")
+                        self.pos_x = random.uniform(speed_item_q_x + 200 , speed_item_q_x  + 500)
+                    #R
+                    if speed_item_q_x + 500 > screen.W:
+                        print("DEBUGG R")
+                        self.pos_x = random.uniform(speed_item_q_x, speed_item_q_x  + 200)
+                    #O
+                    if speed_item_q_y < 0:
+                        print("DEBUGG O")
+                        self.pos_y = random.uniform(speed_item_q_y + 300, speed_item_q_y + 500)
+                    #U
+                    if speed_item_q_y + 500 > screen.H:
+                        print("DEBUGG U")
+                        self.pos_y = random.uniform(speed_item_q_y, speed_item_q_y + 200)
+                    #Lo
+                    if (speed_item_q_x < 0) and speed_item_q_y < 0:
+                        print("DEBUGG LO")
+                        self.pos_x = random.uniform(speed_item_q_x + 200 , speed_item_q_x  + 500)
+                        self.pos_y = random.uniform(speed_item_q_y + 300, speed_item_q_y + 500)
+
+                    #RO
+                    if (speed_item_q_x + 500 > screen.W) and speed_item_q_y < 0:
+                        print("DEBUGG RO")
+                        self.pos_x = random.uniform(speed_item_q_x, speed_item_q_x + 200)
+                        self.pos_y = random.uniform(speed_item_q_y + 300, speed_item_q_y + 500)
+                    #LU
+                    if (speed_item_q_x < 0) and speed_item_q_y + 500 > screen.H:
+                        print("DEBUGG LU")
+                        self.pos_x = random.uniform(speed_item_q_x + 200 , speed_item_q_x  + 500)
+                        self.pos_y = random.uniform(speed_item_q_y, speed_item_q_y + 200)
+                    #RU
+                    if (speed_item_q_x + 500 > screen.W) and (speed_item_q_y + 500 > screen.H):
+                        print("DEBUGG RU")
+                        self.pos_x = random.uniform(speed_item_q_x, speed_item_q_x  + 200)
+                        self.pos_y = random.uniform(speed_item_q_y, speed_item_q_y + 200)
+                    else:
+                        print("DEBUGG M")
+
+                    while ((self.pos_x  < 100) and (self.pos_x >(screen.W - 100))):
+                        print("DEBUGG M1")
+                        self.pos_x = random.uniform(speed_item_q_x, speed_item_q_x + 500)
+                    while ((self.pos_y  > 100) and (self.pos_y  > (screen.H - 100))):
+                        print("DEBUGG M2")
+                        self.pos_y = random.uniform(speed_item_q_y, speed_item_q_y + 500)
+
+
+                    '''
                     self.acquire()
-                    '''   
+     
                     /* SPEED ITEM soll nähe Spieler erscheinen 
                     if (player_list[x].speed_point > 3)
                         self.acquire()
